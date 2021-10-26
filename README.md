@@ -208,6 +208,12 @@ _Figura 6. Imagen referencia del escenario de juego_
 # 4. Referencias
 En este apartado podemos encontrar todas las referencias empleadas para la realización de este documento de diseño del juego.
 
+https://en.wikipedia.org/wiki/Windjammers_(video_game) 
+
+https://www.streets4rage.com/ 
+
+https://swordshield.pokemon.com/es-es/ 
+
 
 
 
