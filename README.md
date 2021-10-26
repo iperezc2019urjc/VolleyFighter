@@ -44,6 +44,19 @@
     * 2.3.8. Jasper Kluivert
   * 2.4. Interacción en red
 * 3.**Arte** 
+  * 3.1. Escenario 
+  * 3.2. Personaje
+* 4.**Referencias**
+
+&nbsp;
+
+# Índice de imágenes
+* Ilustración 1 Ejemplo de género de juego (Wind Jammers)
+* Ilustración 2 Imagen ejemplo estilo visual del juego (Streets of Rage 4)
+* Ilustración 3 Ejemplo de música de juego (Pokémon Escudo y Pokémon Espada)
+* Ilustración 4 Imagen referencia del estilo de los personajes
+* Ilustración 5 Imagen referencia del escenario de juego	10
+* Ilustración 6 Imagen referencia del diseño de personaje de juego	10
 
 &nbsp;
 
@@ -69,7 +82,7 @@ Volley Fighter es en su base un juego arcade (mecánica simple y repetitiva) con
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploGenero.jpg" alt="JuveR" width="700px">
 
-_Figura 1. Ejemplo de género de juego, Wind Jammers_
+_Figura 1. Ejemplo de género de juego (Wind Jammers)_
 
 &nbsp;
 
@@ -83,7 +96,7 @@ Volley Fighters cuenta con un estilo visual sencillo sin mucho detalle. Los pers
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploEstiloVisual.jpg" alt="JuveR" width="700px">
 
-_Figura 2. Imagen ejemplo estilo visual del juego. Streets of Rage 4_
+_Figura 2. Imagen ejemplo estilo visual del juego (Streets of Rage 4)_
 
 &nbsp;
 
@@ -92,14 +105,14 @@ La música empleada en el videojuego Volley Fighters consistirá en una música 
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploMusica.jpg" alt="JuveR" width="700px">
 
-_Figura 3. Ejemplo de música de juego, Pokemon Escudo y Pokemon Espada_
+_Figura 3. Ejemplo de música de juego (Pokémon Escudo y Pokémon Espada)_
 
 &nbsp;
 
 # 2. Mecánicas de juego
 En este apartado se explica con más detalle las mecánicas y escenarios de Volley Fighters.
 
-Se procede a detallar las acciones principales del jugador y todas las mecánicas que este puede realizar. Además se ofrece una lista con todos los personajes disponibles dentro del videojuego con una explicación de su procedencia y su habilidad especial que le identifica.
+Se procede a detallar las acciones principales del jugador y todas las mecánicas que este puede realizar. Además, se ofrece una lista con todos los personajes disponibles dentro del videojuego con una explicación de su procedencia y su habilidad especial que le identifica.
 
 &nbsp;
 
@@ -128,7 +141,9 @@ Si el personaje pierde le aparecerá en pantalla un mensaje de “Game Over” y
 &nbsp;
 
 ## 2.3. Personajes
-En este apartado se procederá a la presentación de cada personaje así cómo a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
+En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
+
+Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de cabeza desproporcionado respecto al cuerpo, tal y cómo se muestra en la imagen siguiente.
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
