@@ -85,9 +85,10 @@ Volley Fighters cuenta con un estilo visual sencillo sin mucho detalle. Los pers
 
 ## 1.6. Música
 La música empleada en el videojuego Volley Fighters consistirá en una música electrónica dentro de la escena de juego, en cambio, en el menú de inicio se podrá encontrar una banda sonora compuesta por cánticos deportivos.
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/Logo.png" alt="JuveR" width="300px">;
 
-_Figura 1. Ejemplo de género de juego, Wind Jammers_
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploGenero.jpg" alt="JuveR" width="700px">;
+
+_Figura 2. Ejemplo de música de juego, Pokemon Escudo y Pokemon Espada_
 
 &nbsp;
 
