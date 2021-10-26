@@ -130,7 +130,7 @@ Si el personaje pierde le aparecerá en pantalla un mensaje de “Game Over” y
 ## 2.3. Personajes
 En este apartado se procederá a la presentación de cada personaje así cómo a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.jpg" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.png" alt="JuveR" width="700px">
 
 _Figura 4. Imagen referencia del estilo de los personajes_
 
@@ -185,7 +185,7 @@ Para el matchmaking uno de los jugadores actuaría como host de la partida permi
 # 3. Arte
 En este apartado se muestran ejemplos de cómo va a ser el diseño de los personajes, además de mostrar cómo sería la implementación de las diferentes interfaces del juego.
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.jpg" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
 _Figura 5. Imagen referencia del escenario de juego_
 
