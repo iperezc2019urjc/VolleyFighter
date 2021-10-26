@@ -187,6 +187,8 @@ En este apartado se muestran ejemplos de cómo va a ser el diseño de los person
 
 ## 3.1. Escenario
 
+Como se muestra en la imagen, el escenario estaría basado en un coliseo romano, contando con gradas llenas de espectadores y un campo donde se juega. El campo estaría dividido en 2 por una red de voleibol. 
+
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
 _Figura 5. Imagen referencia del escenario de juego_
