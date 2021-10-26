@@ -193,9 +193,9 @@ _Figura 5. Imagen referencia del escenario de juego_
 
 ## 3.2. Personaje
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="450px">
 
-_Figura 5. Imagen referencia del escenario de juego_
+_Figura 6. Imagen referencia del escenario de juego_
 
 &nbsp;
 
