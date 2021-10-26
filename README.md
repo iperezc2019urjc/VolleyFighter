@@ -1,6 +1,8 @@
 # DOCUMENTO DE DISEÑO DE JUEGO
 ![](https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/Urjc-Etsii.PNG)
-![](https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/Logo.png)
+
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/Logo.png" alt="JuveR" width="300px">
 
 # Uly Top - VolleyFighter
 
