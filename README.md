@@ -185,6 +185,8 @@ Para el matchmaking uno de los jugadores actuaría como host de la partida permi
 # 3. Arte
 En este apartado se muestran ejemplos de cómo va a ser el diseño de los personajes, además de mostrar cómo sería la implementación de las diferentes interfaces del juego.
 
+&nbsp;
+
 ## 3.1. Escenario
 
 Como se muestra en la imagen, el escenario estaría basado en un coliseo romano, contando con gradas llenas de espectadores y un campo donde se juega. El campo estaría dividido en 2 por una red de voleibol. 
