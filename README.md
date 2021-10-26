@@ -81,6 +81,10 @@ El público objetivo de Volley Fighters es jugadores dentro de un rango amplio d
 ## 1.5. Estilo visual
 Volley Fighters cuenta con un estilo visual sencillo sin mucho detalle. Los personajes tienen una forma chibi (cuerpo pequeño y gran cabeza). El escenario está caracterizado por una red que divide en dos la pantalla ya que está inspirado en el voleibol. La red tiene una altura que mide el doble el doble que la estatura del personaje. El balón tiene un tamaño grande (más grande que el personaje).
 
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploEstiloVisual.jpg" alt="JuveR" width="700px">
+
+_Figura 2. Imagen ejemplo estilo visual del juego. Streets of Rage 4_
+
 &nbsp;
 
 ## 1.6. Música
@@ -88,7 +92,7 @@ La música empleada en el videojuego Volley Fighters consistirá en una música 
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploMusica.jpg" alt="JuveR" width="700px">
 
-_Figura 2. Ejemplo de música de juego, Pokemon Escudo y Pokemon Espada_
+_Figura 3. Ejemplo de música de juego, Pokemon Escudo y Pokemon Espada_
 
 &nbsp;
 
