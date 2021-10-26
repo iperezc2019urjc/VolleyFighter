@@ -67,7 +67,9 @@ Este evento característico se trata de un partido de voleibol realizado en el u
 ## 1.3. Género
 Volley Fighter es en su base un juego arcade (mecánica simple y repetitiva) con una temática deportiva (voleibol).
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/Logo.png" alt="JuveR" width="300px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/ImagenEjemploGenero.jpg" alt="JuveR" width="700px">;
+
+_Figura 1. Ejemplo de género de juego, Wind Jammers_
 
 &nbsp;
 
