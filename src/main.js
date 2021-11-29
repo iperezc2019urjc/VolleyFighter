@@ -241,8 +241,8 @@ class SeleccionJ2 extends Phaser.Scene {
 		else if (jugador1 === 'CesarAugusto') { //P2
 			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
-			SelP2.setScale(0.3);
+			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3.setScale(0.3);
 			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
 			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
@@ -445,18 +445,17 @@ class EscenaJuego extends Phaser.Scene {
 			{ frameWidth: 32, frameHeight: 48 });
 		this.load.spritesheet('spriteP3', 'assets/EmanuelDurao.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		//Sprites por crear
-		this.load.spritesheet('spriteP4', 'assets/CesarAugusto.png',
+		this.load.spritesheet('spriteP4', 'assets/DmitriEfremov.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('spriteP5', 'assets/CesarAugusto.png',
+		this.load.spritesheet('spriteP5', 'assets/PhilippeDepoortere.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('spriteP6', 'assets/CesarAugusto.png',
+		this.load.spritesheet('spriteP6', 'assets/JeanneLouiseCalment.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('spriteP7', 'assets/CesarAugusto.png',
+		this.load.spritesheet('spriteP7', 'assets/FranciscoFernandez.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		this.load.spritesheet('spriteP8', 'assets/CesarAugusto.png',
+		this.load.spritesheet('spriteP8', 'assets/JasperKluivert.png',
 			{ frameWidth: 32, frameHeight: 48 });
-		//Sprites por crear
+	
 
 		this.load.image('balon', 'assets/wizball.png');
 		this.load.image('redV', 'assets/red.png');
