@@ -167,7 +167,7 @@ class SeleccionJ1 extends Phaser.Scene {
 		});
 
 		SelP2.on('pointerdown', function (pointer) {
-			jugador1 = ' CesarAugusto';
+			jugador1 = 'CesarAugusto';
 		});
 
 		SelP3.on('pointerdown', function (pointer) {
