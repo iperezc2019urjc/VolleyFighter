@@ -47,23 +47,24 @@ var efectoHabilidadDmitriEfremov2 = false;
 var efectoHabilidadFranciscoFernandez1 = false;
 var efectoHabilidadFranciscoFernandez2 = false;
 var torreEiffel;
+var CTE1;
+var CTE2;
+var CTE3;
 
 
 /////////////////////////////////FUNCIONES PARA LAS HABILIDADES/////////////////////////
 //Activar la habilidad del player1
 function activacionHabilidades1() {
 	poderActivarHabilidad1 = true;
-	habilidad1 = this.physics.add.image(100, 700, 'habilidadP1').setScale(0.1);
-	this.physics.add.collider(habilidad1, plataformaIZQ);
-	this.physics.add.collider(habilidad1, plataformaDER);
+	habilidad1 = this.physics.add.image(100, 600, 'habilidadP1').setScale(0.1);
+	habilidad1.setCollideWorldBounds(true);
 }
 
 //Activar la habilidad del player2
 function activacionHabilidades2() {
 	poderActivarHabilidad2 = true;
-	habilidad2 = this.physics.add.image(1300, 700, 'habilidadP2').setScale(0.1);
-	this.physics.add.collider(habilidad2, plataformaIZQ);
-	this.physics.add.collider(habilidad2, plataformaDER);
+	habilidad2 = this.physics.add.image(1300, 600, 'habilidadP2').setScale(0.1);
+	habilidad2.setCollideWorldBounds(true);
 }
 
 //Gestionar la habilidad de Irene Merkel
@@ -110,6 +111,9 @@ function habilidadJasperKluivert() {
 //Gestionar la habilidad de Jeanne Louise Calment
 function habilidadJeanneLouiseCalment() {
 	torreEiffel.disableBody(true, true);
+	CTE1.disableBody(true, true);
+	CTE2.disableBody(true, true);
+	CTE3.disableBody(true, true);
 }
 
 
@@ -119,18 +123,28 @@ function finDeJuego() {
 		victoriaJ1 = this.add.text(200, 216, 'HA GANADO EL JUGADOR 1', { fontSize: '75px', fill: '#000' });
 		player2.setTint(0xff0000);
 		player1.setTint(0x00ff00);
+		timedEvent.paused = true;
+		pelota.disableBody(true, true);
+		this.physics.pause();
+		player1.anims.play('turn1');
+		player2.anims.play('turn2');
 	} else if (marcadorJ1 < marcadorJ2) {
 		victoriaJ2 = this.add.text(200, 216, 'HA GANADO EL JUGADOR 2', { fontSize: '75px', fill: '#000' });
 		player1.setTint(0xff0000);
 		player2.setTint(0x00ff00);
+		timedEvent.paused = true;
+		pelota.disableBody(true, true);
+		this.physics.pause();
+		player1.anims.play('turn1');
+		player2.anims.play('turn2');
 	} else {
 		empate = this.add.text(540, 216, 'EMPATE', { fontSize: '100px', fill: '#000' });
+		timedEvent.paused = true;
+		pelota.disableBody(true, true);
+		this.physics.pause();
+		player1.anims.play('turn1');
+		player2.anims.play('turn2');
 	}
-	timedEvent.paused = true;
-	pelota.disableBody(true, true);
-	this.physics.pause();
-	player1.anims.play('turn1');
-	player2.anims.play('turn2');
 }
 
 
@@ -195,12 +209,31 @@ class PreCarga extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('escenario', 'assets/sky.png');
+		this.load.image('menuPrincipal', 'assets/menu principal.png');
+		this.load.image('boton', 'assets/JUGAR boton.png');
 	}
 
 	create() {
-		this.add.image(400, 300, 'escenario').setScale(3.5);
-		this.add.text(300, 400, 'Click to Start', { fontSize: '32px', fill: '#000' });
+		this.add.image(700, 375, 'menuPrincipal').setScale(1);
+		this.add.sprite(700, 615, 'boton').setScale(1).setInteractive();
+
+		this.input.on('gameobjectover', function (pointer, gameObject) {
+
+			gameObject.setTint(0x00ff00);
+		});
+
+		this.input.on('gameobjectout', function (pointer, gameObject) {
+
+			if (gameObject.input.isDown) {
+				gameObject.setTint(0xff0000);
+
+			}
+			else {
+				gameObject.clearTint();
+
+			}
+		});
+
 		this.input.once('pointerdown', () => {
 			this.scene.start('SeleccionJ1');
 		});
@@ -214,7 +247,7 @@ class SeleccionJ1 extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('escenario', 'assets/sky.png');
+		this.load.image('EscJ1', 'assets/JUGADOR 1.png');
 		this.load.image('personaje1', 'assets/Personaje1.png');
 		this.load.image('personaje2', 'assets/Personaje2.png');
 		this.load.image('personaje3', 'assets/Personaje3.png');
@@ -226,24 +259,23 @@ class SeleccionJ1 extends Phaser.Scene {
 	}
 
 	create() {
-		this.add.image(400, 300, 'escenario').setScale(3.5);
-		this.add.text(300, 100, 'Jugador 1 seleccione personaje', { fontSize: '32px', fill: '#000' });
-		SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+		this.add.image(700, 375, 'EscJ1').setScale(1);
+		SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 		SelP1.setScale(0.3);
-		SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+		SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 		SelP2.setScale(0.3);
-		SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+		SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 		SelP3.setScale(0.3);
-		SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+		SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 		SelP4.setScale(0.3);
-		SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+		SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 		SelP5.setScale(0.3);
-		SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+		SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 		SelP6.setScale(0.7);
-		SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+		SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 		SelP7.setScale(0.3);
-		SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-		SelP8.setScale(0.3);
+		SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+		SelP8.setScale(0.32);
 
 		//Cambiar el color al personaje que tiene el cursor encima
 		this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -309,7 +341,7 @@ class SeleccionJ2 extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('escenario', 'assets/sky.png');
+		this.load.image('EscJ2', 'assets/JUGADOR 2.png');
 		this.load.image('personaje1', 'assets/Personaje1.png');
 		this.load.image('personaje2', 'assets/Personaje2.png');
 		this.load.image('personaje3', 'assets/Personaje3.png');
@@ -321,136 +353,135 @@ class SeleccionJ2 extends Phaser.Scene {
 	}
 
 	create() {
-		this.add.image(400, 300, 'escenario').setScale(3.5);
-		this.add.text(300, 100, 'Jugador 2 seleccione personaje', { fontSize: '32px', fill: '#000' });
+		this.add.image(700, 375, 'EscJ2').setScale(1);
 
 		//Bucles para asegurar que no se escogen los mismos personajes
 		if (jugador1 === 'IreneMerkel') { //P1
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'CesarAugusto') { //P2
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'EmanuelDurao') { //P3
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'DmitriEfremov') { //P4
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'PhilippeDepoortere') { //P5
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'JeanneLouiseCalment') { //P6
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else if (jugador1 === 'FranciscoFernandez') { //P7
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP8 = this.add.sprite(950, 600, 'personaje8').setInteractive();
-			SelP8.setScale(0.3);
+			SelP8 = this.add.sprite(1050, 590, 'personaje8').setInteractive();
+			SelP8.setScale(0.32);
 		}
 		else { //P8
-			SelP1 = this.add.sprite(200, 300, 'personaje1').setInteractive();
+			SelP1 = this.add.sprite(300, 300, 'personaje1').setInteractive();
 			SelP1.setScale(0.3);
-			SelP2 = this.add.sprite(450, 300, 'personaje2').setInteractive();
+			SelP2 = this.add.sprite(550, 300, 'personaje2').setInteractive();
 			SelP2.setScale(0.3);
-			SelP3 = this.add.sprite(700, 300, 'personaje3').setInteractive();
+			SelP3 = this.add.sprite(800, 300, 'personaje3').setInteractive();
 			SelP3.setScale(0.3);
-			SelP4 = this.add.sprite(950, 300, 'personaje4').setInteractive();
+			SelP4 = this.add.sprite(1050, 300, 'personaje4').setInteractive();
 			SelP4.setScale(0.3);
-			SelP5 = this.add.sprite(200, 600, 'personaje5').setInteractive();
+			SelP5 = this.add.sprite(300, 600, 'personaje5').setInteractive();
 			SelP5.setScale(0.3);
-			SelP6 = this.add.sprite(450, 600, 'personaje6').setInteractive();
+			SelP6 = this.add.sprite(550, 610, 'personaje6').setInteractive();
 			SelP6.setScale(0.7);
-			SelP7 = this.add.sprite(700, 600, 'personaje7').setInteractive();
+			SelP7 = this.add.sprite(800, 600, 'personaje7').setInteractive();
 			SelP7.setScale(0.3);
 		}
 
@@ -519,13 +550,31 @@ class EscenaPreJuego extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('escenario', 'assets/sky.png');
+		this.load.image('EscPre', 'assets/fondo.png');/////CAMBIAR AQUI////////
+		this.load.image('boton', 'assets/JUGAR boton.png');
 	}
 	create() {
-		this.add.image(400, 300, 'escenario').setScale(3.5);
-		this.add.text(300, 400, 'El jugador 1 ha seleccionado: ' + jugador1, { fontSize: '32px', fill: '#000' });
-		this.add.text(300, 600, 'El jugador 2 ha seleccionado: ' + jugador2, { fontSize: '32px', fill: '#000' });
-		this.add.text(300, 200, 'Pulsar para jugar', { fontSize: '32px', fill: '#000' });
+		this.add.image(700, 375, 'EscPre').setScale(1);
+		this.add.text(280, 400, 'El jugador 1 ha seleccionado: ' + jugador1, { fontSize: '50px', fill: '#000', fontFamily: 'fuente' });
+		this.add.text(280, 600, 'El jugador 2 ha seleccionado: ' + jugador2, { fontSize: '50px', fill: '#000', fontFamily: 'fuente' });
+		this.add.sprite(700, 200, 'boton').setScale(1).setInteractive();
+
+		this.input.on('gameobjectover', function (pointer, gameObject) {
+
+			gameObject.setTint(0xff0000);
+		});
+
+		this.input.on('gameobjectout', function (pointer, gameObject) {
+
+			if (gameObject.input.isDown) {
+				gameObject.setTint(0xff0000);
+
+			}
+			else {
+				gameObject.clearTint();
+
+			}
+		});
 
 		this.input.once('pointerdown', () => {
 			this.scene.start('EscenaJuego');
@@ -567,14 +616,19 @@ class EscenaJuego extends Phaser.Scene {
 		this.load.image('habilidadP2', 'assets/habilidad.png');
 		this.load.image('torrePisa', 'assets/torrePisa.png');
 		this.load.image('torreEiffel', 'assets/torreEiffel.png');
+		this.load.image('CTE1', 'assets/CTE1.png');
+		this.load.image('CTE2', 'assets/CTE2.png');
+		this.load.image('CTE3', 'assets/CTE3.png');
+
 	}
 
 	create() {
 		//////////////////////////CREACIÓN DEL FONDO///////////////////////
 		this.add.image(700, 375, 'FirstBackground').setScale(1);
-		habilidad1 = this.physics.add.image(100, 700, 'habilidadP1').setScale(0.1);
-		habilidad2 = this.physics.add.image(1300, 700, 'habilidadP2').setScale(0.1);
-
+		habilidad1 = this.physics.add.image(100, 600, 'habilidadP1').setScale(0.1);
+		habilidad2 = this.physics.add.image(1300, 600, 'habilidadP2').setScale(0.1);
+		habilidad1.setCollideWorldBounds(true);
+		habilidad2.setCollideWorldBounds(true);
 
 		//////////////////////////CREACIÓN DEL ESCENARIO///////////////////////
 		plataformaIZQ = this.physics.add.staticGroup();
@@ -864,7 +918,6 @@ class EscenaJuego extends Phaser.Scene {
 
 		}
 		else if (jugador2 === 'CesarAugusto') {
-			console.log('a');
 			player2 = this.physics.add.sprite(1300, 450, 'spriteP2');
 			player2.setScale(3)
 			player2.setCollideWorldBounds(true);
@@ -1101,7 +1154,7 @@ class EscenaJuego extends Phaser.Scene {
 		this.physics.add.overlap(player1, objInvisible, nopoderSaltar, null, this);
 		this.physics.add.collider(player1, plataformaIZQ, poderSaltar, null, this);
 		this.physics.add.collider(player1, plataformaIZQ);
-		this.physics.add.overlap(player1, plataformaDER, teletransporteJ1, null, this);
+		this.physics.add.overlap(player1, redes, teletransporteJ1, null, this);
 		this.physics.add.collider(player1, redes);
 		this.physics.add.collider(player1, pelota, player1HitBall, null, this);
 
@@ -1109,7 +1162,7 @@ class EscenaJuego extends Phaser.Scene {
 		this.physics.add.collider(player2, plataformaIZQ, poderSaltar, null, this);
 		this.physics.add.collider(player2, plataformaIZQ);
 		this.physics.add.collider(player2, plataformaDER);
-		this.physics.add.overlap(player2, plataformaIZQ, teletransporteJ2, null, this);
+		this.physics.add.overlap(player2, redes, teletransporteJ2, null, this);
 		this.physics.add.collider(player2, redes);
 		this.physics.add.collider(player2, pelota, player2HitBall, null, this);
 
@@ -1118,16 +1171,11 @@ class EscenaJuego extends Phaser.Scene {
 		this.physics.add.collider(pelota, redes);
 		this.physics.add.overlap(pelota, plataformaIZQ, ballScore, null, this);
 		this.physics.add.overlap(pelota, plataformaDER, ballScore2, null, this);
-
-		this.physics.add.collider(habilidad1, plataformaIZQ);
-		this.physics.add.collider(habilidad1, plataformaDER);
-		this.physics.add.collider(habilidad2, plataformaIZQ);
-		this.physics.add.collider(habilidad2, plataformaDER);
 	}
 
 	update() {
 		//Tiempo de juego
-		textoTiempo.setText('Tiempo para finalizar: ' + (200 - ((timedEvent.getProgress() * 200).toString().substr(0, 2))));
+		textoTiempo.setText('Tiempo para finalizar: ' + (200 - ((timedEvent.getProgress() * 200).toString().substr(0, 3))));
 
 		//Terminar el juego al llegar a 20 puntos
 		if (marcadorJ2 == 20 || marcadorJ1 == 20) {
@@ -1206,11 +1254,12 @@ class EscenaJuego extends Phaser.Scene {
 					this.time.delayedCall(60000, activacionHabilidades1, [], this);
 				}
 				else if (jugador1 === 'CesarAugusto') {
-					torrePisa = this.physics.add.image(600, 700, 'torrePisa').setScale(1);
+					torrePisa = this.physics.add.image(540, 700, 'torrePisa').setScale(0.3);
 					torrePisa.setCollideWorldBounds(true);
 					torrePisa.body.immovable = true;
+					torrePisa.body.setC
 					this.physics.add.collider(torrePisa, pelota);
-					this.time.delayedCall(60000, habilidadCesarAugusto, [], this);
+					this.time.delayedCall(6000, habilidadCesarAugusto, [], this);
 
 					poderActivarHabilidad1 = false;
 					habilidad1.disableBody(true, true);
@@ -1219,7 +1268,7 @@ class EscenaJuego extends Phaser.Scene {
 				else if (jugador1 === 'EmanuelDurao') {
 					pelota.setCircle(23);
 					pelota.setScale(0.5);
-					this.time.delayedCall(60000, habilidadEmanuelDurao, [], this);
+					this.time.delayedCall(6000, habilidadEmanuelDurao, [], this);
 
 					poderActivarHabilidad1 = false;
 					habilidad1.disableBody(true, true);
@@ -1242,11 +1291,23 @@ class EscenaJuego extends Phaser.Scene {
 					this.time.delayedCall(60000, activacionHabilidades1, [], this);
 				}
 				else if (jugador1 === 'JeanneLouiseCalment') {
-					torreEiffel = this.physics.add.image(600, 700, 'torreEiffel').setScale(0.2);
+					torreEiffel = this.physics.add.image(600, 500, 'torreEiffel').setScale(0.25);
 					torreEiffel.setCollideWorldBounds(true);
-					torreEiffel.body.immovable = true;
-					this.physics.add.collider(torreEiffel, pelota);
-					this.time.delayedCall(60000, habilidadJeanneLouiseCalment, [], this);
+					CTE1 = this.physics.add.image(600, 670, 'CTE1').setScale(0.25);
+					CTE1.setCollideWorldBounds(true);
+					CTE1.body.immovable = true;
+					CTE2 = this.physics.add.image(600, 440, 'CTE2').setScale(0.25);
+					CTE2.setCollideWorldBounds(true);
+					CTE2.body.immovable = true;
+					CTE3 = this.physics.add.image(600, 440, 'CTE3').setScale(0.25);
+					CTE3.setCollideWorldBounds(true);
+					CTE3.body.immovable = true;
+
+					this.physics.add.collider(CTE1, pelota);
+					this.physics.add.collider(CTE2, pelota);
+					this.physics.add.collider(CTE3, pelota);
+
+					this.time.delayedCall(6000, habilidadJeanneLouiseCalment, [], this);
 
 					poderActivarHabilidad1 = false;
 					habilidad1.disableBody(true, true);
@@ -1328,11 +1389,11 @@ class EscenaJuego extends Phaser.Scene {
 					this.time.delayedCall(60000, activacionHabilidades2, [], this);
 				}
 				else if (jugador2 === 'CesarAugusto') {
-					torrePisa = this.physics.add.image(900, 700, 'torrePisa').setScale(1);
+					torrePisa = this.physics.add.image(860, 700, 'torrePisa').setScale(0.3);
 					torrePisa.setCollideWorldBounds(true);
 					torrePisa.body.immovable = true;
 					this.physics.add.collider(torrePisa, pelota);
-					this.time.delayedCall(60000, habilidadCesarAugusto, [], this);
+					this.time.delayedCall(6000, habilidadCesarAugusto, [], this);
 
 					poderActivarHabilidad2 = false;
 					habilidad2.disableBody(true, true);
@@ -1341,7 +1402,7 @@ class EscenaJuego extends Phaser.Scene {
 				else if (jugador2 === 'EmanuelDurao') {
 					pelota.setCircle(23);
 					pelota.setScale(0.5);
-					this.time.delayedCall(60000, habilidadEmanuelDurao, [], this);
+					this.time.delayedCall(6000, habilidadEmanuelDurao, [], this);
 
 					poderActivarHabilidad2 = false;
 					habilidad2.disableBody(true, true);
@@ -1364,11 +1425,24 @@ class EscenaJuego extends Phaser.Scene {
 					this.time.delayedCall(60000, activacionHabilidades2, [], this);
 				}
 				else if (jugador2 === 'JeanneLouiseCalment') {
-					torreEiffel = this.physics.add.image(900, 700, 'torreEiffel').setScale(0.2);
+					torreEiffel = this.physics.add.image(900, 670, 'torreEiffel').setScale(0.25);
 					torreEiffel.setCollideWorldBounds(true);
-					torreEiffel.body.immovable = true;
-					this.physics.add.collider(torreEiffel, pelota);
-					this.time.delayedCall(60000, habilidadJeanneLouiseCalment, [], this);
+
+					CTE1 = this.physics.add.image(900, 670, 'CTE1').setScale(0.25);
+					CTE1.setCollideWorldBounds(true);
+					CTE1.body.immovable = true;
+					CTE2 = this.physics.add.image(900, 440, 'CTE2').setScale(0.25);
+					CTE2.setCollideWorldBounds(true);
+					CTE2.body.immovable = true;
+					CTE3 = this.physics.add.image(900, 440, 'CTE3').setScale(0.25);
+					CTE3.setCollideWorldBounds(true);
+					CTE3.body.immovable = true;
+
+					this.physics.add.collider(CTE1, pelota);
+					this.physics.add.collider(CTE2, pelota);
+					this.physics.add.collider(CTE3, pelota);
+
+					this.time.delayedCall(6000, habilidadJeanneLouiseCalment, [], this);
 
 					poderActivarHabilidad2 = false;
 					habilidad2.disableBody(true, true);
