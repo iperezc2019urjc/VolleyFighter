@@ -15,3 +15,10 @@ canvas{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@font-face {
+    font-family: fuente;
+    src: url('../fuentes/Stay and Shine.ttf');
+    font-weight: 800;
+    font-weight: normal;
+}
