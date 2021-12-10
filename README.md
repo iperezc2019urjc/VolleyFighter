@@ -46,6 +46,16 @@
 * 3.**Arte** 
   * 3.1. Escenario 
   * 3.2. Personaje
+  * 3.3. Diseño final del escenario 
+  * 3.4. Diseño final de los personajes
+    * 3.4.1. Jeanne Louise Calment
+    * 3.4.2. Emanuel Durão
+    * 3.4.3. César Augusto
+    * 3.4.4. Irene Merkel
+    * 3.4.5. Francisco Fernández
+    * 3.4.6. Philippe Depoortere
+    * 3.4.7. Dmitri Efremov
+    * 3.4.8. Jasper Kluivert
 * 4.**Referencias**
 
 &nbsp;
@@ -152,17 +162,17 @@ _Figura 4. Imagen referencia del estilo de los personajes_
 &nbsp;
 
 ### 2.3.1. Jeanne Louise Calment
-Jeanne Louise Calment es un personaje procedente de la región francesa, su habilidad consiste en obtener una baguette para ampliar su rango de golpeo del balón.
+Jeanne Louise Calment es un personaje procedente de la región francesa, su habilidad consiste en crear la Torre Eiffel durante 6 segundos.
 
 &nbsp;
 
 ### 2.3.2. Emanuel Durão
-Emanuel Durão es un personaje procedente de la región portuguesa, su habilidad consiste en hacer la pelota de juego más pequeña.
+Emanuel Durão es un personaje procedente de la región portuguesa, su habilidad consiste en hacer la pelota de juego más pequeña durante 6 segundos.
 
 &nbsp;
 
 ### 2.3.3. César Augusto
-César Augusto es un personaje procedente de la región italiana, su habilidad consiste en poder invocar la Torre de Pizza de forma defensiva para ayudarle a defender puntos.
+César Augusto es un personaje procedente de la región italiana, su habilidad consiste en poder invocar la Torre de Pisa de forma defensiva para ayudarle a defender puntos durante 6 segundos.
 
 &nbsp;
 
@@ -172,22 +182,22 @@ Irene Merkel es un personaje procedente de la región alemana, su habilidad cons
 &nbsp;
 
 ### 2.3.5. Francisco Fernández
-Francisco Fernández es un personaje procedente de la región española, su habilidad consiste en aumentar la potencia de la bola de juego, ocasionando que el rival retroceda y pierda velocidad.
+Francisco Fernández es un personaje procedente de la región española, su habilidad consiste en aumentar la potencia del juego, ocasionando que el rival retroceda y pierda velocidad durante 10 segundos.
 
 &nbsp;
 
 ### 2.3.6. Philippe Depoortere
-Philippe Depoortere es un personaje procedente de la región belga, su habilidad consiste en aumentar el tamaño del personaje durante una cantidad determinada de tiempo.
+Philippe Depoortere es un personaje procedente de la región belga, su habilidad consiste en aumentar el tamaño del personaje durante 7 segundos.
 
 &nbsp;
 
 ### 2.3.7. Dmitri Efremov
-Dmitri Efremov es un personaje procedente de la región rusa, su habilidad consiste en poder consumir un elixir que aumenta su velocidad de movimiento y salto en un 50% durante 5 segundos.
+Dmitri Efremov es un personaje procedente de la región rusa, su habilidad consiste en poder consumir un elixir que aumenta su velocidad de movimiento en un 50% durante 5 segundos.
 
 &nbsp;
 
 ### 2.3.8. Jasper Kluivert
-Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad consiste en poder hacer que el suelo del rival se convierta en una superficie deslizante, complicando el movimiento.
+Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad consiste en reducir el tamaño de su oponente durante 7 segundos.
 
 &nbsp;
 
@@ -220,6 +230,64 @@ _Figura 6. Imagen referencia del escenario de juego_
 
 &nbsp;
 
+## 3.3. Diseño final del escenario
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/FirstBackground.png" alt="JuveR" width="700px">
+
+_Figura 7. Imagen referencia del diseño final del escenario de juego_
+
+&nbsp;
+
+## 3.4. Diseño final de los personajes
+
+### 3.4.1. Jeanne Louise Calment
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje6.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.2. Emanuel Durão
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje3.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.3. César Augusto
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje2.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.4. Irene Merkel
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje1.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.5. Francisco Fernández
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje7.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.6. Philippe Depoortere
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje5.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.7. Dmitri Efremov
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje4.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+### 3.4.8. Jasper Kluivert
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje8.png" alt="JuveR" width="500px">
+
+&nbsp;
+
 # 4. Referencias
 En este apartado podemos encontrar todas las referencias empleadas para la realización de este documento de diseño del juego.
 
@@ -228,6 +296,8 @@ https://en.wikipedia.org/wiki/Windjammers_(video_game)
 https://www.streets4rage.com/ 
 
 https://swordshield.pokemon.com/es-es/ 
+
+https://craftpix.net/categorys/sprites/
 
 
 
