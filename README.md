@@ -140,7 +140,7 @@ Se procede a detallar las acciones principales del jugador y todas las mecánica
 ## 2.2. Flujo de juego
 En esta sección se va a detallar el transcurso de una partida. Se explicarán los pasos que debe seguir el jugador desde que empieza el juego hasta completar una partida. 
 
-El jugador inicia Volley Fighter y lo primero que verá será el menú principal donde tendrá que seleccionar si quiere jugar en el modo de dos jugadores o en el modo de cuatro.
+El jugador inicia Volley Fighter y lo primero que verá será el menú principal donde tendrá que seleccionar si quiere jugar o ir a la pantalla de tutorial o créditos.
 
 En la siguiente pantalla el jugador tendrá la opción de seleccionar el modo de juego que desee. Hay dos modos de juego, el modo de juego por tiempo y el modo de juego por puntos. Por último, antes de entrar en partida, el jugador podrá elegir el escenario y el personaje con el que quiere jugar su partida. 
 
@@ -204,6 +204,8 @@ Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad
 ## 2.4. Interacción en red
 Durante la ejecución del juego, todos los jugadores jugarían de forma simultánea viendo así todos los movimientos de su rival a tiempo real, pudiendo así interaccionar con la pelota a la vez que el otro.
 Para el matchmaking uno de los jugadores actuaría como host de la partida permitiendo al resto unirse a su partida.
+Se ha añadido un chat durante la partida que permite a los dos jugadores comunicarse entre ellos mediante mensajes. Además, para empezar el juego, se deberán introducir nombres de usuario para cada jugador.
+
 
 &nbsp;
 
