@@ -1,6 +1,3 @@
-//********************** FASE 3 **********************//
-var chat;
-
 /////////////////////////////////VARIABLES DEL JUEGO/////////////////////////
 var fondo;
 var IreneMerkel;
@@ -37,6 +34,10 @@ var audioFrancisco;
 var audioPhilippe;
 var audioIrene; 
 var audioDmitri; 
+var indice=0;
+var textoParaChat;
+var chat = [undefined];
+var sePuedeEnviar = true;
 
 /////////////////////////////////VARIABLES SELECCIÓN DE PERSONAJES/////////////////////////
 var jugador1;
@@ -49,7 +50,6 @@ var SelP5;
 var SelP6;
 var SelP7;
 var SelP8;
-
 
 /////////////////////////////////VARIABLES HABILIDADES ESPECIALES/////////////////////////
 efectoHabilidadIreneMerkel1 = false;
@@ -67,12 +67,6 @@ var torreEiffel;
 var CTE1;
 var CTE2;
 var CTE3;
-
-/////////////////////////////////VARIABLES CHAT DAVID/////////////////////////
-var chat = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
-var textoChat;
-var textoChatCabecera;
-var enviar = true;
 
 /////////////////////////////////FUNCIONES PARA LAS HABILIDADES/////////////////////////
 //Activar la habilidad del player1
@@ -197,7 +191,7 @@ function player1HitBall(player1, pelota) {
 	            url: "/Chat",
 	            dataType: "json",
      		});
-     	rebote.play();
+     rebote.play();
 }
 
 //Dar velocidad a la pelota al ser golpeada por el player2
@@ -208,7 +202,7 @@ function player2HitBall(player2, pelota) {
 	            url: "/Chat",
 	            dataType: "json",
      		});
- rebote.play();
+ 	rebote.play();
 }
 
 //Mover al player1 si pasa la red
@@ -272,7 +266,6 @@ class PreCarga extends Phaser.Scene {
         jugar.once('pointerdown', () => {
             this.scene.start('SeleccionJ1')
         });
-       // this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(jugar);
         
         var tutorial = this.add.zone(775, 570, 330, 90);
         tutorial.setOrigin(0);
@@ -280,10 +273,6 @@ class PreCarga extends Phaser.Scene {
         tutorial.once('pointerdown', () => {
             this.scene.start('Tutorial')
         });
-        
-       
-      
-       // this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(tutorial);
 	}
 }
 
@@ -313,9 +302,6 @@ class Tutorial extends Phaser.Scene {
 			musicaFondo.stop();
             this.scene.start('PreCarga')
         });
-        //this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(volver);
-		
-	
 	}
 }
 
@@ -628,7 +614,6 @@ class SeleccionJ2 extends Phaser.Scene {
 class EscenaPreJuego extends Phaser.Scene {
 	constructor() {
 		super({ key: 'EscenaPreJuego' });
-
 	}
 
 	preload() {
@@ -650,7 +635,6 @@ class EscenaPreJuego extends Phaser.Scene {
 			musicaFondo.stop();
             this.scene.start('EscenaJuego')
         });
-       // this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(juego);
         
         var chatear = this.add.zone(870, 60, 480, 80);
         chatear.setOrigin(0);
@@ -658,8 +642,6 @@ class EscenaPreJuego extends Phaser.Scene {
         chatear.once('pointerdown', () => {
             this.scene.start('Chat')
         });
-      //  this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(chatear);
-		
 	}
 }
 
@@ -672,11 +654,13 @@ class Chat extends Phaser.Scene {
 	preload() {
 		this.load.image('fondoChat', 'assets/fondo.png');
 		this.load.image('botonVolver', 'assets/BotonVolver.png');
+		this.load.image('imagenChat', 'assets/BotonChat.png');
 	}
 
 	create() {
 		this.add.image(700, 375, 'fondoChat').setScale(1);
 		this.add.sprite(1200, 670, 'botonVolver').setScale(1);
+		this.add.image(700, 100, 'imagenChat').setScale(1);
 
 		var regreso = this.add.zone(1070, 630, 250, 80);
         regreso.setOrigin(0);
@@ -685,15 +669,12 @@ class Chat extends Phaser.Scene {
             this.scene.start('EscenaPreJuego');
         });
         
-        //this.add.graphics().lineStyle(2,0xff0000).strokeRectShape(regreso);
        
-       // Fase 3
         $.ajax({
             type: "DELETE",
-            url: "/chat",
+            url: "/SalaParaChat",
             dataType: "json",
         }).done(function (data) {
-            console.log("DELETE CHAT");
         });
         $.ajax({
             type: "POST",
@@ -701,35 +682,26 @@ class Chat extends Phaser.Scene {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            url: "/chat",
+            url: "/SalaParaChat",
             data: JSON.stringify(""),
             dataType: "json",
             processData: false
         }).done(function (data) {
-            console.log("POST CHAT");
         });
         
-		textoChatCabecera = this.add.text(500, 550, "--------- CHAT ---------", { fontSize: '20px', aling: 'center' });
-        textoChat = this.add.text(500, 550, chat, { fontSize: '20px', aling: 'center' });
-        
-        textoChat.setText(chat);
+        textoParaChat = this.add.text(600, 150, chat, { fontSize: '40px', aling: 'center', color: '#000000' });
+        textoParaChat.setText(chat);
 	}
 	update(){
-		$("#value-input").click(function () {
-            //this.scene.pause(EscenaJuego);
-            console.log("pausa");
-
-            enviar = true;
+		$("#entradaTexto").click(function () {
+            sePuedeEnviar = true;
         })
         
-
-        $("#add-button").click(function () {
-            if (enviar === true) {
-                enviar = false;
-
-                //this.scene.resume(EscenaJuego);
-                console.log("no pausa");
-                var value = $('#value-input').val();
+        $("#botonTexto").click(function () {
+            if (sePuedeEnviar === true) {
+	 			
+                sePuedeEnviar = false;
+                var value = $('#entradaTexto').val();
 
                 $.ajax({
                     type: "PUT",
@@ -737,42 +709,28 @@ class Chat extends Phaser.Scene {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    url: "/chat",
+                    url: "/SalaParaChat",
                     data: JSON.stringify(value),
                     dataType: "json",
                     processData: false
                 }).done(function (data) {
-                    console.log("PUT CHAT");
+                    chat[indice]=value;
+                    indice++;
+                    textoParaChat.setText(chat);
+                   
                 });
                 
-                textChat.text = '';
-                $('#value-input').val('');
+                $('#entradaTexto').val('');
             }
         })
         
         $.ajax({
             type: "GET",
-            url: "/chat",
+            url: "/SalaParaChat",
             dataType: "json",
-        }).done(function (data) {
-            //chat = data;
-            
-            chat[0] = undefined;
-            chat[1] = data[data.length - 8];
-            chat[2] = data[data.length - 7];
-            chat[3] = data[data.length - 6];
-            chat[4] = data[data.length - 5];
-            chat[5] = data[data.length - 4];
-            chat[6] = data[data.length - 3];
-            chat[7] = data[data.length - 2];
-            chat[8] = data[data.length - 1];
-            
-            console.log(chat);
-            console.log(chat.length);
-            console.log(data.length);
-            console.log("GET CHAT");
+        }).done(function (data) {      
+              
         });
-        
 	}
 }
 
@@ -840,9 +798,8 @@ class EscenaJuego extends Phaser.Scene {
 		audioPhilippe = this.sound.add('audioPhilippe', { loop: false });
 		audioIrene = this.sound.add('audioIrene', { loop: false });
 		audioDmitri = this.sound.add('audioDmitri', { loop: false });
-		
-		
        	musicaJuego.play();
+       	
 		//////////////////////////CREACIÓN DEL FONDO///////////////////////
 		this.add.image(700, 375, 'FirstBackground').setScale(1);
 		habilidad1 = this.physics.add.image(100, 600, 'habilidadP1').setScale(0.1);
