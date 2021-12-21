@@ -33,6 +33,8 @@
 * 2.**Mecánicas de juego**
   * 2.1. Jugabilidad 
   * 2.2. Flujo de juego
+    * 2.2.1. Flujo de pantallas
+    * 2.2.2. Diagrama de clases y API REST
   * 2.3. Personaje
     * 2.3.1. Jeanne Louise Calment
     * 2.3.2. Emanuel Durão
@@ -56,6 +58,7 @@
     * 3.4.6. Philippe Depoortere
     * 3.4.7. Dmitri Efremov
     * 3.4.8. Jasper Kluivert
+  * 3.5. Música y efectos de sonido
 * 4.**Referencias**
 
 &nbsp;
@@ -149,6 +152,45 @@ El personaje comienza la partida en un campo de volley y en el escenario selecci
 Si el personaje pierde le aparecerá en pantalla un mensaje de “Game Over” y lo devolverá al menú principal. Si el personaje gana le aparecerá un mensaje de “You WIN” y se le devolverá al menú principal.
 
 &nbsp;
+
+### 2.2.1. Flujo de pantallas
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/PreCarga.png" alt="JuveR" width="700px">
+_Figura 5. Pantalla de inicio de Juego_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.png" alt="JuveR" width="700px">
+_Figura 6. Pantalla de tutorial_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ1.png" alt="JuveR" width="700px">
+_Figura 7. Pantalla de selección de personaje del jugador 1_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ2.png" alt="JuveR" width="700px">
+_Figura 8. Pantalla de selección de personaje del jugador 2_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preJuego.png" alt="JuveR" width="700px">
+_Figura 9. Pantalla previa a iniciar el juego_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/chat.png" alt="JuveR" width="700px">
+_Figura 10. Pantalla sala de chat_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/juego.png" alt="JuveR" width="700px">
+_Figura 11. Pantalla de juego_
+&nbsp;
+
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.png" alt="JuveR" width="700px">
+_Figura 12. Pantalla de juego_
+&nbsp;
+
+### 2.2.2. Diagrama de clases y API REST
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujo.png" alt="JuveR" width="700px">
+_Figura 13. Flujo de pantallas_
+&nbsp;
+
 
 ## 2.3. Personajes
 En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
@@ -244,49 +286,54 @@ _Figura 7. Imagen referencia del diseño final del escenario de juego_
 
 ### 3.4.1. Jeanne Louise Calment
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje6.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje6.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.2. Emanuel Durão
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje3.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje3.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.3. César Augusto
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje2.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje2.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.4. Irene Merkel
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje1.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje1.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.5. Francisco Fernández
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje7.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje7.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.6. Philippe Depoortere
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje5.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje5.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.7. Dmitri Efremov
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje4.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje4.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.8. Jasper Kluivert
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/Personaje8.png" alt="JuveR" width="500px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje8.png" alt="JuveR" width="500px">
+
+&nbsp;
+
+## 3.5. Música y efectos de sonido
+
 
 &nbsp;
 
