@@ -154,41 +154,55 @@ Si el personaje pierde le aparecerá en pantalla un mensaje de “Game Over” y
 &nbsp;
 
 ### 2.2.1. Flujo de pantallas
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/PreCarga.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/PreCarga.PNG" alt="JuveR" width="700px">
+
 _Figura 5. Pantalla de inicio de Juego_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.PNG" alt="JuveR" width="700px">
+
 _Figura 6. Pantalla de tutorial_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ1.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ1.PNG" alt="JuveR" width="700px">
+
 _Figura 7. Pantalla de selección de personaje del jugador 1_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ2.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ2.PNG" alt="JuveR" width="700px">
 _Figura 8. Pantalla de selección de personaje del jugador 2_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preJuego.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preJuego.PNG" alt="JuveR" width="700px">
 _Figura 9. Pantalla previa a iniciar el juego_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/chat.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/chat.PNG" alt="JuveR" width="700px">
 _Figura 10. Pantalla sala de chat_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/juego.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/juego.PNG" alt="JuveR" width="700px">
 _Figura 11. Pantalla de juego_
+
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.PNG" alt="JuveR" width="700px">
+
 _Figura 12. Pantalla de juego_
+
 &nbsp;
 
 ### 2.2.2. Diagrama de clases y API REST
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujo.png" alt="JuveR" width="700px">
+
 _Figura 13. Flujo de pantallas_
+
 &nbsp;
 
 
@@ -199,7 +213,7 @@ Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
-_Figura 4. Imagen referencia del estilo de los personajes_
+_Figura 14. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
@@ -262,7 +276,7 @@ Como se muestra en la imagen, el escenario estaría basado en un coliseo romano,
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
-_Figura 5. Imagen referencia del escenario de juego_
+_Figura 15. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -270,7 +284,7 @@ _Figura 5. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.png" alt="JuveR" width="700px">
 
-_Figura 6. Imagen referencia del escenario de juego_
+_Figura 16. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -278,7 +292,7 @@ _Figura 6. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/FirstBackground.png" alt="JuveR" width="700px">
 
-_Figura 7. Imagen referencia del diseño final del escenario de juego_
+_Figura 17. Imagen referencia del diseño final del escenario de juego_
 
 &nbsp;
 
@@ -333,6 +347,44 @@ _Figura 7. Imagen referencia del diseño final del escenario de juego_
 &nbsp;
 
 ## 3.5. Música y efectos de sonido
+
+
+https://user-images.githubusercontent.com/79656478/146990039-bbf4ed30-6aba-4211-a973-e886da870dd5.mp4
+
+
+https://user-images.githubusercontent.com/79656478/146990286-d01cb54e-5e99-491a-9dc3-2f69ec643282.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990312-97937660-9cb6-450c-8fed-4b9d0e217d9d.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990316-2d1d9827-6a32-4302-82e4-9232f41cf99d.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990317-5b5649ce-a1bf-44d6-8aa2-09401fe6361e.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990320-0b27594d-b792-4628-af82-9b12aa33a6d6.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990322-4fe2820b-b734-41da-869e-42b9393e1a82.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990323-f4a659b2-8a30-43aa-a680-76e5fd0f18ef.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990324-a4554abe-d84f-49b9-95e8-a4015373eb49.mp4
+
+
+
+https://user-images.githubusercontent.com/79656478/146990326-118776f0-ec40-4717-9b58-88d7382a5b5b.mp4
 
 
 &nbsp;
