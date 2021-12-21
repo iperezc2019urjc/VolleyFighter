@@ -59,7 +59,8 @@
     * 3.4.7. Dmitri Efremov
     * 3.4.8. Jasper Kluivert
   * 3.5. Música y efectos de sonido
-* 4.**Referencias**
+* 4.**Instrucciones precisas para ejecutar la aplicación**
+* 5.**Referencias**
 
 &nbsp;
 
@@ -194,17 +195,31 @@ _Figura 11. Pantalla de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.PNG" alt="JuveR" width="700px">
 
-_Figura 12. Pantalla de juego_
+_Figura 12. Pantalla de créditos_
 
 &nbsp;
 
 ### 2.2.2. Diagrama de clases y API REST
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujo.png" alt="JuveR" width="700px">
 
-_Figura 13. Flujo de pantallas_
+_Figura 13. Diagrama de clases_
 
 &nbsp;
 
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/api.png" alt="JuveR" width="700px">
+
+_Figura 14. API REST_
+
+&nbsp;
+
+Nuestra API Rest contiene las diferentes clases:
+&nbsp;
+ - Chat y ChatRestController: se encarga del control del chat que se realiza en la pantalla del juego.
+ - SalaChat y SalaChatController: se encarga del control de la sala específica de chat dentro del juego.
+&nbsp;
+Todas las clases contienen sus correspondientes métodos GET, PUT, DELETE y POST para realizar todo el control de la API Rest.
+
+&nbsp;
 
 ## 2.3. Personajes
 En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
@@ -213,7 +228,7 @@ Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
-_Figura 14. Imagen referencia del estilo de los personajes_
+_Figura 15. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
@@ -276,7 +291,7 @@ Como se muestra en la imagen, el escenario estaría basado en un coliseo romano,
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
-_Figura 15. Imagen referencia del escenario de juego_
+_Figura 16. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -284,15 +299,15 @@ _Figura 15. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.png" alt="JuveR" width="700px">
 
-_Figura 16. Imagen referencia del escenario de juego_
+_Figura 17. Imagen referencia del escenario de juego_
 
 &nbsp;
 
 ## 3.3. Diseño final del escenario
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/assets/FirstBackground.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/FirstBackground.png" alt="JuveR" width="700px">
 
-_Figura 17. Imagen referencia del diseño final del escenario de juego_
+_Figura 18. Imagen referencia del diseño final del escenario de juego_
 
 &nbsp;
 
@@ -389,7 +404,21 @@ https://user-images.githubusercontent.com/79656478/146990326-118776f0-ec40-4717-
 
 &nbsp;
 
-# 4. Referencias
+
+# 4. Instrucciones precisas para ejecutar la aplicación
+Para ejecutar la aplicación hay que seguir los siguientes pasos:
+&nbsp;
+
+1- Levantar el servidor: para ello será necesario estar en posesión del proyecto, importarlo y ejecutarlo en Eclipse.
+&nbsp;
+
+2- Acceder al navegador para poder jugar, preferiblemente Google Chrome.
+&nbsp;
+
+3- Acceder a la direción IP de la máquina que ha levantado el servidor.
+&nbsp;
+
+# 5. Referencias
 En este apartado podemos encontrar todas las referencias empleadas para la realización de este documento de diseño del juego.
 
 https://en.wikipedia.org/wiki/Windjammers_(video_game) 
@@ -399,8 +428,6 @@ https://www.streets4rage.com/
 https://swordshield.pokemon.com/es-es/ 
 
 https://craftpix.net/categorys/sprites/
-
-
 
 
 
