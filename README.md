@@ -34,7 +34,6 @@
   * 2.1. Jugabilidad 
   * 2.2. Flujo de juego
     * 2.2.1. Flujo de pantallas
-    * 2.2.2. Diagrama de clases y API REST
   * 2.3. Personaje
     * 2.3.1. Jeanne Louise Calment
     * 2.3.2. Emanuel Durão
@@ -44,7 +43,6 @@
     * 2.3.6. Philippe Depoortere
     * 2.3.7. Dmitri Efremov
     * 2.3.8. Jasper Kluivert
-  * 2.4. Interacción en red
 * 3.**Arte** 
   * 3.1. Escenario 
   * 3.2. Personaje
@@ -61,16 +59,6 @@
   * 3.5. Música y efectos de sonido
 * 4.**Instrucciones precisas para ejecutar la aplicación**
 * 5.**Referencias**
-
-&nbsp;
-
-# Índice de imágenes
-* Ilustración 1 Ejemplo de género de juego (Wind Jammers)
-* Ilustración 2 Imagen ejemplo estilo visual del juego (Streets of Rage 4)
-* Ilustración 3 Ejemplo de música de juego (Pokémon Escudo y Pokémon Espada)
-* Ilustración 4 Imagen referencia del estilo de los personajes
-* Ilustración 5 Imagen referencia del escenario de juego	10
-* Ilustración 6 Imagen referencia del diseño de personaje de juego	10
 
 &nbsp;
 
@@ -150,8 +138,6 @@ En la siguiente pantalla el jugador tendrá la opción de seleccionar el modo de
 
 El personaje comienza la partida en un campo de volley y en el escenario seleccionado y se le avisará con una cuenta atrás de 3 segundos de que el partido va a comenzar. Según el modo de juego, tendrá un objetivo u otro. El jugador será derrotado en ambos casos si tiene menos puntos que su rival. El jugador podrá seleccionar la habilidad especial de su personaje siempre y cuando esté cargada. La habilidad se recarga por tiempo.
 
-Si el personaje pierde le aparecerá en pantalla un mensaje de “Game Over” y lo devolverá al menú principal. Si el personaje gana le aparecerá un mensaje de “You WIN” y se le devolverá al menú principal.
-
 &nbsp;
 
 ### 2.2.1. Flujo de pantallas
@@ -183,41 +169,20 @@ _Figura 9. Pantalla previa a iniciar el juego_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/chat.PNG" alt="JuveR" width="700px">
-_Figura 10. Pantalla sala de chat_
-
-&nbsp;
-
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/juego.PNG" alt="JuveR" width="700px">
-_Figura 11. Pantalla de juego_
+_Figura 10. Pantalla de juego_
 
 &nbsp;
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.PNG" alt="JuveR" width="700px">
 
-_Figura 12. Pantalla de créditos_
+_Figura 11. Pantalla de créditos_
 
 &nbsp;
 
-### 2.2.2. Diagrama de clases y API REST
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujo.png" alt="JuveR" width="700px">
 
-_Figura 13. Diagrama de clases_
-
-&nbsp;
-
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/api.png" alt="JuveR" width="700px">
-
-_Figura 14. API REST_
-
-&nbsp;
-
-Nuestra API Rest contiene las diferentes clases:
-&nbsp;
- - Chat y ChatRestController: se encarga del control del chat que se realiza en la pantalla del juego.
- - SalaChat y SalaChatController: se encarga del control de la sala específica de chat dentro del juego.
-&nbsp;
-Todas las clases contienen sus correspondientes métodos GET, PUT, DELETE y POST para realizar todo el control de la API Rest.
+_Figura 12. Flujo de pantallas_
 
 &nbsp;
 
@@ -228,7 +193,7 @@ Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
-_Figura 15. Imagen referencia del estilo de los personajes_
+_Figura 13. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
@@ -272,14 +237,6 @@ Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad
 
 &nbsp;
 
-## 2.4. Interacción en red
-Durante la ejecución del juego, todos los jugadores jugarían de forma simultánea viendo así todos los movimientos de su rival a tiempo real, pudiendo así interaccionar con la pelota a la vez que el otro.
-Para el matchmaking uno de los jugadores actuaría como host de la partida permitiendo al resto unirse a su partida.
-Se ha añadido un chat durante la partida que permite a los dos jugadores comunicarse entre ellos mediante mensajes. Además, para empezar el juego, se deberán introducir nombres de usuario para cada jugador.
-
-
-&nbsp;
-
 # 3. Arte
 En este apartado se muestran ejemplos de cómo va a ser el diseño de los personajes, además de mostrar cómo sería la implementación de las diferentes interfaces del juego.
 
@@ -291,7 +248,7 @@ Como se muestra en la imagen, el escenario estaría basado en un coliseo romano,
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
-_Figura 16. Imagen referencia del escenario de juego_
+_Figura 14. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -299,7 +256,7 @@ _Figura 16. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.png" alt="JuveR" width="700px">
 
-_Figura 17. Imagen referencia del escenario de juego_
+_Figura 15. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -307,7 +264,7 @@ _Figura 17. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/FirstBackground.png" alt="JuveR" width="700px">
 
-_Figura 18. Imagen referencia del diseño final del escenario de juego_
+_Figura 16. Imagen referencia del diseño final del escenario de juego_
 
 &nbsp;
 
@@ -405,20 +362,7 @@ https://user-images.githubusercontent.com/79656478/146990326-118776f0-ec40-4717-
 &nbsp;
 
 
-# 4. Instrucciones precisas para ejecutar la aplicación
-Para ejecutar la aplicación hay que seguir los siguientes pasos:
-&nbsp;
-
-1- Levantar el servidor: para ello será necesario estar en posesión del proyecto, importarlo y ejecutarlo en Eclipse.
-&nbsp;
-
-2- Acceder al navegador para poder jugar, preferiblemente Google Chrome.
-&nbsp;
-
-3- Acceder a la direción IP de la máquina que ha levantado el servidor.
-&nbsp;
-
-# 5. Referencias
+# 4. Referencias
 En este apartado podemos encontrar todas las referencias empleadas para la realización de este documento de diseño del juego.
 
 https://en.wikipedia.org/wiki/Windjammers_(video_game) 
