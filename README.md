@@ -57,8 +57,7 @@
     * 3.4.7. Dmitri Efremov
     * 3.4.8. Jasper Kluivert
   * 3.5. Música y efectos de sonido
-* 4.**Instrucciones precisas para ejecutar la aplicación**
-* 5.**Referencias**
+* 4.**Referencias**
 
 &nbsp;
 
@@ -147,7 +146,7 @@ _Figura 5. Pantalla de inicio de Juego_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.PNG" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.png" alt="JuveR" width="700px">
 
 _Figura 6. Pantalla de tutorial_
 
@@ -164,7 +163,7 @@ _Figura 8. Pantalla de selección de personaje del jugador 2_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preJuego.PNG" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preGame.JPG" alt="JuveR" width="700px">
 _Figura 9. Pantalla previa a iniciar el juego_
 
 &nbsp;
@@ -174,13 +173,13 @@ _Figura 10. Pantalla de juego_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.PNG" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.png" alt="JuveR" width="700px">
 
 _Figura 11. Pantalla de créditos_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujo.png" alt="JuveR" width="700px">
+<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujoPantallas.png" alt="JuveR" width="700px">
 
 _Figura 12. Flujo de pantallas_
 
@@ -372,6 +371,4 @@ https://www.streets4rage.com/
 https://swordshield.pokemon.com/es-es/ 
 
 https://craftpix.net/categorys/sprites/
-
-
 
