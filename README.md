@@ -261,7 +261,7 @@ _Figura 15. Imagen referencia del escenario de juego_
 
 ## 3.3. Diseño final del escenario
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/FirstBackground.png" alt="JuveR" width="700px">
+<img src="Imagenes GDD/FirstBackground.png" alt="JuveR" width="700px">
 
 _Figura 16. Imagen referencia del diseño final del escenario de juego_
 
@@ -271,49 +271,49 @@ _Figura 16. Imagen referencia del diseño final del escenario de juego_
 
 ### 3.4.1. Jeanne Louise Calment
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje6.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje6.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.2. Emanuel Durão
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje3.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje3.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.3. César Augusto
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje2.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje2.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.4. Irene Merkel
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje1.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje1.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.5. Francisco Fernández
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje7.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje7.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.6. Philippe Depoortere
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje5.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje5.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.7. Dmitri Efremov
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje4.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje4.png" alt="JuveR" width="500px">
 
 &nbsp;
 
 ### 3.4.8. Jasper Kluivert
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Volley%20Fighters/Volley/src/main/resources/static/assets/Personaje8.png" alt="JuveR" width="500px">
+<img src="Imagenes GDD/Personaje8.png" alt="JuveR" width="500px">
 
 &nbsp;
 
@@ -356,6 +356,12 @@ https://user-images.githubusercontent.com/79656478/146990324-a4554abe-d84f-49b9-
 
 
 https://user-images.githubusercontent.com/79656478/146990326-118776f0-ec40-4717-9b58-88d7382a5b5b.mp4
+
+
+https://user-images.githubusercontent.com/79656478/170252296-77f6ba48-6199-4306-9ae5-509eecdc74b8.mp4
+
+
+https://user-images.githubusercontent.com/79656478/170252308-e3eb32dc-833c-4272-a296-8d8bf2d9ffc5.mp4
 
 
 &nbsp;
