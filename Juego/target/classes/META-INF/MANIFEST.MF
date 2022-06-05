@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: ivanp
+Build-Jdk: 17.0.1
+Implementation-Title: VolleyFighters
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: Juego
+Implementation-URL: http://www.example.com
+Created-By: Maven Integration for Eclipse
+
