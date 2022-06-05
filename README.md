@@ -34,15 +34,16 @@
   * 2.1. Jugabilidad 
   * 2.2. Flujo de juego
     * 2.2.1. Flujo de pantallas
-  * 2.3. Personaje
-    * 2.3.1. Jeanne Louise Calment
-    * 2.3.2. Emanuel Durão
-    * 2.3.3. César Augusto
-    * 2.3.4. Irene Merkel
-    * 2.3.5. Francisco Fernández
-    * 2.3.6. Philippe Depoortere
-    * 2.3.7. Dmitri Efremov
-    * 2.3.8. Jasper Kluivert
+  * 2.3. API REST
+  * 2.4. Personajes
+    * 2.4.1. Jeanne Louise Calment
+    * 2.4.2. Emanuel Durão
+    * 2.4.3. César Augusto
+    * 2.4.4. Irene Merkel
+    * 2.4.5. Francisco Fernández
+    * 2.4.6. Philippe Depoortere
+    * 2.4.7. Dmitri Efremov
+    * 2.4.8. Jasper Kluivert
 * 3.**Arte** 
   * 3.1. Escenario 
   * 3.2. Personaje
@@ -57,7 +58,8 @@
     * 3.4.7. Dmitri Efremov
     * 3.4.8. Jasper Kluivert
   * 3.5. Música y efectos de sonido
-* 4.**Referencias**
+* 4.**Instrucciones ejecución del juego** 
+* 5.**Referencias**
 
 &nbsp;
 
@@ -140,98 +142,133 @@ El personaje comienza la partida en un campo de volley y en el escenario selecci
 &nbsp;
 
 ### 2.2.1. Flujo de pantallas
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/PreCarga.PNG" alt="JuveR" width="700px">
+![image](https://user-images.githubusercontent.com/79656478/172044806-e426ee0b-7c32-4583-a616-41f9f051f194.png)
 
 _Figura 5. Pantalla de inicio de Juego_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/tutorial.png" alt="JuveR" width="700px">
+![image](https://user-images.githubusercontent.com/79656478/172045071-cd88d4b1-42ff-49f5-b093-52eb38046999.png)
 
 _Figura 6. Pantalla de tutorial_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ1.PNG" alt="JuveR" width="700px">
+![image](https://user-images.githubusercontent.com/79656478/172045091-366603c1-ae28-4f23-ae74-848175faa203.png)
 
-_Figura 7. Pantalla de selección de personaje del jugador 1_
-
-&nbsp;
-
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/seleccionJ2.PNG" alt="JuveR" width="700px">
-_Figura 8. Pantalla de selección de personaje del jugador 2_
+_Figura 7. Pantalla de selección de nombre del jugador 1_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/preGame.JPG" alt="JuveR" width="700px">
-_Figura 9. Pantalla previa a iniciar el juego_
+![image](https://user-images.githubusercontent.com/79656478/172045111-3f654942-2fc3-4b87-ac04-13e8d1de44a8.png)
+
+_Figura 8. Pantalla de selección de nombre del jugador 2_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/juego.PNG" alt="JuveR" width="700px">
-_Figura 10. Pantalla de juego_
+![image](https://user-images.githubusercontent.com/79656478/172045140-e5733899-9ae2-4e08-8d24-a15838346c89.png)
+
+_Figura 9. Pantalla de selección de personaje del jugador 1_
 
 &nbsp;
 
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/creditos.png" alt="JuveR" width="700px">
+![image](https://user-images.githubusercontent.com/79656478/172045180-49883bd7-8585-4590-a7f1-bf46fa6be9f7.png)
 
-_Figura 11. Pantalla de créditos_
-
-&nbsp;
-
-<img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/flujoPantallas.png" alt="JuveR" width="700px">
-
-_Figura 12. Flujo de pantallas_
+_Figura 10. Pantalla de selección de personaje del jugador 2_
 
 &nbsp;
 
-## 2.3. Personajes
+![image](https://user-images.githubusercontent.com/79656478/172045201-646393a0-b537-4f14-ac1c-f45afb39ec06.png)
+
+_Figura 11. Pantalla previa a iniciar el juego_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172045245-1334c072-406f-4a7e-9509-68e1a621d8f1.png)
+
+_Figura 12. Pantalla de sala de chat_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172045284-055bd111-ad13-4c4f-8072-70e7526973a7.png)
+
+_Figura 13. Pantalla de juego_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172045345-595d8e19-17a9-4363-8240-c34b69a967ad.png)
+
+_Figura 14. Pantalla de créditos_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172045839-1e1fa7af-c66f-4d12-9c59-ec83ef3f56a1.png)
+
+_Figura 15. Flujo de pantallas_
+
+&nbsp;
+
+## 2.3. API REST
+Para la creación de la API REST en el lenguaje de programación Java, se ha empleado el IDE Eclipse.
+La API contiene:
+- Una clase salaChat con su respectivo salaChatRestController, en las cuales se definen constructores, getters y setters, y los métodos GET, PUT, DELETE y POST respectivamente para el correcto funcionamiento de una sala de chat que permite la comunicación entre usuarios. 
+- Una clase username con su respectivo usernameRestController, en las cuales se definen constructores, getters y setters, y los métodos GET, PUT, DELETE y POST respectivamente para permitir a cada usuario seleccionar un nombre que le identifique para jugar la partida. 
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172046614-e941d90b-841d-40a5-9acd-d9a8e5aa65e6.png)
+
+_Figura 17. Clases de la API REST_
+
+&nbsp;
+
+## 2.4. Personajes
 En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
 
 Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de cabeza desproporcionado respecto al cuerpo, tal y cómo se muestra en la imagen siguiente.
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
-_Figura 13. Imagen referencia del estilo de los personajes_
+_Figura 17. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
-### 2.3.1. Jeanne Louise Calment
+### 2.4.1. Jeanne Louise Calment
 Jeanne Louise Calment es un personaje procedente de la región francesa, su habilidad consiste en crear la Torre Eiffel durante 6 segundos.
 
 &nbsp;
 
-### 2.3.2. Emanuel Durão
+### 2.4.2. Emanuel Durão
 Emanuel Durão es un personaje procedente de la región portuguesa, su habilidad consiste en hacer la pelota de juego más pequeña durante 6 segundos.
 
 &nbsp;
 
-### 2.3.3. César Augusto
+### 2.4.3. César Augusto
 César Augusto es un personaje procedente de la región italiana, su habilidad consiste en poder invocar la Torre de Pisa de forma defensiva para ayudarle a defender puntos durante 6 segundos.
 
 &nbsp;
 
-### 2.3.4. Irene Merkel
+### 2.4.4. Irene Merkel
 Irene Merkel es un personaje procedente de la región alemana, su habilidad consiste en quemar a su oponente, impidiendo que éste se mueva durante 3 segundos.
 
 &nbsp;
 
-### 2.3.5. Francisco Fernández
+### 2.4.5. Francisco Fernández
 Francisco Fernández es un personaje procedente de la región española, su habilidad consiste en aumentar la potencia del juego, ocasionando que el rival retroceda y pierda velocidad durante 10 segundos.
 
 &nbsp;
 
-### 2.3.6. Philippe Depoortere
+### 2.4.6. Philippe Depoortere
 Philippe Depoortere es un personaje procedente de la región belga, su habilidad consiste en aumentar el tamaño del personaje durante 7 segundos.
 
 &nbsp;
 
-### 2.3.7. Dmitri Efremov
+### 2.4.7. Dmitri Efremov
 Dmitri Efremov es un personaje procedente de la región rusa, su habilidad consiste en poder consumir un elixir que aumenta su velocidad de movimiento en un 50% durante 5 segundos.
 
 &nbsp;
 
-### 2.3.8. Jasper Kluivert
+### 2.4.8. Jasper Kluivert
 Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad consiste en reducir el tamaño de su oponente durante 7 segundos.
 
 &nbsp;
@@ -247,7 +284,7 @@ Como se muestra en la imagen, el escenario estaría basado en un coliseo romano,
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
-_Figura 14. Imagen referencia del escenario de juego_
+_Figura 18. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -255,7 +292,7 @@ _Figura 14. Imagen referencia del escenario de juego_
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje.png" alt="JuveR" width="700px">
 
-_Figura 15. Imagen referencia del escenario de juego_
+_Figura 19. Imagen referencia del escenario de juego_
 
 &nbsp;
 
@@ -263,7 +300,7 @@ _Figura 15. Imagen referencia del escenario de juego_
 
 <img src="Imagenes GDD/FirstBackground.png" alt="JuveR" width="700px">
 
-_Figura 16. Imagen referencia del diseño final del escenario de juego_
+_Figura 20. Imagen referencia del diseño final del escenario de juego_
 
 &nbsp;
 
@@ -319,55 +356,46 @@ _Figura 16. Imagen referencia del diseño final del escenario de juego_
 
 ## 3.5. Música y efectos de sonido
 
-
 https://user-images.githubusercontent.com/79656478/146990039-bbf4ed30-6aba-4211-a973-e886da870dd5.mp4
-
 
 https://user-images.githubusercontent.com/79656478/146990286-d01cb54e-5e99-491a-9dc3-2f69ec643282.mp4
 
-
-
 https://user-images.githubusercontent.com/79656478/146990312-97937660-9cb6-450c-8fed-4b9d0e217d9d.mp4
-
-
 
 https://user-images.githubusercontent.com/79656478/146990316-2d1d9827-6a32-4302-82e4-9232f41cf99d.mp4
 
-
-
 https://user-images.githubusercontent.com/79656478/146990317-5b5649ce-a1bf-44d6-8aa2-09401fe6361e.mp4
-
-
 
 https://user-images.githubusercontent.com/79656478/146990320-0b27594d-b792-4628-af82-9b12aa33a6d6.mp4
 
-
-
 https://user-images.githubusercontent.com/79656478/146990322-4fe2820b-b734-41da-869e-42b9393e1a82.mp4
-
-
 
 https://user-images.githubusercontent.com/79656478/146990323-f4a659b2-8a30-43aa-a680-76e5fd0f18ef.mp4
 
-
-
 https://user-images.githubusercontent.com/79656478/146990324-a4554abe-d84f-49b9-95e8-a4015373eb49.mp4
-
-
 
 https://user-images.githubusercontent.com/79656478/146990326-118776f0-ec40-4717-9b58-88d7382a5b5b.mp4
 
-
 https://user-images.githubusercontent.com/79656478/170252296-77f6ba48-6199-4306-9ae5-509eecdc74b8.mp4
-
 
 https://user-images.githubusercontent.com/79656478/170252308-e3eb32dc-833c-4272-a296-8d8bf2d9ffc5.mp4
 
-
 &nbsp;
 
+# 4. Instrucciones ejecución del juego
+Para ejecutar la aplicación hay que seguir los siguientes pasos:
+&nbsp;
 
-# 4. Referencias
+1- Levantar el servidor: para ello será necesario estar en posesión del proyecto, importarlo y ejecutarlo en Eclipse.
+&nbsp;
+
+2- Acceder al navegador para poder jugar, preferiblemente Google Chrome.
+&nbsp;
+
+3- Acceder a la direción IP de la máquina que ha levantado el servidor.
+&nbsp;
+
+# 5. Referencias
 En este apartado podemos encontrar todas las referencias empleadas para la realización de este documento de diseño del juego.
 
 https://en.wikipedia.org/wiki/Windjammers_(video_game) 
