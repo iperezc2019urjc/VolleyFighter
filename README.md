@@ -218,7 +218,7 @@ La API contiene:
 
 ![image](https://user-images.githubusercontent.com/79656478/172046614-e941d90b-841d-40a5-9acd-d9a8e5aa65e6.png)
 
-_Figura 17. Clases de la API REST_
+_Figura 16. Clases de la API REST_
 
 &nbsp;
 
