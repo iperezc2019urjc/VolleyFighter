@@ -35,15 +35,16 @@
   * 2.2. Flujo de juego
     * 2.2.1. Flujo de pantallas
   * 2.3. API REST
-  * 2.4. Personajes
-    * 2.4.1. Jeanne Louise Calment
-    * 2.4.2. Emanuel Durão
-    * 2.4.3. César Augusto
-    * 2.4.4. Irene Merkel
-    * 2.4.5. Francisco Fernández
-    * 2.4.6. Philippe Depoortere
-    * 2.4.7. Dmitri Efremov
-    * 2.4.8. Jasper Kluivert
+  * 2.4. WebSockets
+  * 2.5. Personajes
+    * 2.5.1. Jeanne Louise Calment
+    * 2.5.2. Emanuel Durão
+    * 2.5.3. César Augusto
+    * 2.5.4. Irene Merkel
+    * 2.5.5. Francisco Fernández
+    * 2.5.6. Philippe Depoortere
+    * 2.5.7. Dmitri Efremov
+    * 2.5.8. Jasper Kluivert
 * 3.**Arte** 
   * 3.1. Escenario 
   * 3.2. Personaje
@@ -222,7 +223,24 @@ _Figura 16. Clases de la API REST_
 
 &nbsp;
 
-## 2.4. Personajes
+## 2.4. WebSockets
+La clase que maneja el WebSocket del videojuego es WebsockeVolleyFighterstHandler, esta clase esta formada por los siguientes métodos:
+- afterConnectionEstablished(): asigna el valor 1 al primer usuario que se conecta al servidor y un 0 al segundo que se conecta. Además muestra por pantalla un aviso de que existe un nuevo jugador junto a su ID.
+- afterConnectionClosed(): muestra por pantalla que un jugador ha salido del servidor junto a su ID.
+- handleTextMessage(): recibe un mensaje JSON desde el códido de phaser con todos los cambios del juego que queremos actualizar y los prepara para ser leídos por el método enviarInfo().
+- enviarInfo(): manda toda la información actualizada a diferentes jugadores conectados al servidor.
+
+Los elementos que el cliente le comunica al servidor son:
+- La posición de los jugadores.
+- La orientación de los jugadores.
+- El tiempo de juego.
+- La posición de la pelota.
+- Los puntos que lleva cada jugador.
+- La información sobre la activación de las habilidades especiales de cada personaje.
+
+&nbsp;
+
+## 2.5. Personajes
 En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
 
 Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de cabeza desproporcionado respecto al cuerpo, tal y cómo se muestra en la imagen siguiente.
@@ -233,42 +251,42 @@ _Figura 17. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
-### 2.4.1. Jeanne Louise Calment
+### 2.5.1. Jeanne Louise Calment
 Jeanne Louise Calment es un personaje procedente de la región francesa, su habilidad consiste en crear la Torre Eiffel durante 6 segundos.
 
 &nbsp;
 
-### 2.4.2. Emanuel Durão
+### 2.5.2. Emanuel Durão
 Emanuel Durão es un personaje procedente de la región portuguesa, su habilidad consiste en hacer la pelota de juego más pequeña durante 6 segundos.
 
 &nbsp;
 
-### 2.4.3. César Augusto
+### 2.5.3. César Augusto
 César Augusto es un personaje procedente de la región italiana, su habilidad consiste en poder invocar la Torre de Pisa de forma defensiva para ayudarle a defender puntos durante 6 segundos.
 
 &nbsp;
 
-### 2.4.4. Irene Merkel
+### 2.5.4. Irene Merkel
 Irene Merkel es un personaje procedente de la región alemana, su habilidad consiste en quemar a su oponente, impidiendo que éste se mueva durante 3 segundos.
 
 &nbsp;
 
-### 2.4.5. Francisco Fernández
+### 2.5.5. Francisco Fernández
 Francisco Fernández es un personaje procedente de la región española, su habilidad consiste en aumentar la potencia del juego, ocasionando que el rival retroceda y pierda velocidad durante 10 segundos.
 
 &nbsp;
 
-### 2.4.6. Philippe Depoortere
+### 2.5.6. Philippe Depoortere
 Philippe Depoortere es un personaje procedente de la región belga, su habilidad consiste en aumentar el tamaño del personaje durante 7 segundos.
 
 &nbsp;
 
-### 2.4.7. Dmitri Efremov
+### 2.5.7. Dmitri Efremov
 Dmitri Efremov es un personaje procedente de la región rusa, su habilidad consiste en poder consumir un elixir que aumenta su velocidad de movimiento en un 50% durante 5 segundos.
 
 &nbsp;
 
-### 2.4.8. Jasper Kluivert
+### 2.5.8. Jasper Kluivert
 Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad consiste en reducir el tamaño de su oponente durante 7 segundos.
 
 &nbsp;
