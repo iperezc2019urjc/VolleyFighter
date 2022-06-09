@@ -1,3 +1,94 @@
+/////////////////////////////////VARIABLES PARA WEBSOCKET/////////////////////////
+var host;
+var pantallaEspera;
+var animacionJugador1 = "turn1";
+var animacionJugador2 = "turn2";
+var tiempoAux = 0;
+var empezarPartida = false;
+var FernandoActivado;
+var IreneActivado;
+var evitarBucle = true;
+var lanzarDoble = true;
+
+/////////////////////////////////MÉTODOS PARA WEBSOCKET/////////////////////////
+function WebSocketConnection() {
+	// Establecemos conexion con el servidor
+  	conexion = new WebSocket("ws://127.0.0.1:8080/volleyFighters");
+  	
+  	// Mandamos un mensaje cuando abrimos la conexion
+  	conexion.onopen = function () {
+    	console.log('Conexion abierta');
+  	};
+  	// Mandamos un mensaje cuando cerramos la conexion
+  	conexion.onclose = function () {
+    	console.log("Conexion cerrada");
+  	};
+  	// Mandamos un mensaje si hay algun error
+  	conexion.onerror = function (e) {
+    	console.log("Error: " + e);
+  	};
+	// Recibimos la informacion nueva
+  	conexion.onmessage = function (data) {
+    	//console.log("Mensaje recibido: " + data.data);
+
+	    DatosActualziarJs = JSON.parse(data.data);
+	    if (DatosActualziarJs.EsHost == 1) {
+	      	host = 1;
+	    }else if (DatosActualziarJs.EsHost == 0){
+			host = 0;
+		}else if (host == 1) {
+	      	datosParaJ1(DatosActualziarJs);
+	    }else if (host == 0){
+	      	datosParaJ2(DatosActualziarJs);
+	    }
+	 };
+}
+
+function datosParaJ1(DatosActualziarJs) {
+		// Posición de los personajes
+    	player2.x = DatosActualziarJs.x;
+  		player2.y = DatosActualziarJs.y;
+  		
+  		// Animación personaje
+  		player2.anims.play(DatosActualziarJs.animacionJugadores, true);
+  		
+  		//Habilidad Fernando 
+  		if (DatosActualziarJs.HabilidadFernando === true){
+			FernandoActivado = true;
+		}else{
+			FernandoActivado = false;
+		}
+		
+}
+
+function datosParaJ2(DatosActualziarJs) {
+		// Posición de los personajes
+    	player1.x = DatosActualziarJs.x;
+  		player1.y = DatosActualziarJs.y;
+  		
+  		// Animación personaje
+  		player1.anims.play(DatosActualziarJs.animacionJugadores, true);
+  		
+  		// Tiempo
+		tiempoAux = DatosActualziarJs.tiempo;
+		
+		// Ultimates
+		pelota.x = DatosActualziarJs.PelotaX;
+		pelota.y = DatosActualziarJs.PelotaY;
+		
+		// Puntos de jugadores
+		marcadorJ1 = DatosActualziarJs.PuntosJ1;
+		marcadorJ2 = DatosActualziarJs.PuntosJ2;
+		
+		//Habilidad Irene 
+  		if(DatosActualziarJs.HabilidadIrene){
+			IreneActivado = true;
+		}else{
+			IreneActivado = false;
+		}
+}
+
+
 /////////////////////////////////VARIABLES DEL JUEGO/////////////////////////
 var fondo;
 var IreneMerkel;
@@ -17,6 +108,8 @@ var puedeSaltar = true;
 var timedEvent;
 var player1;
 var player2;
+var nombre1;
+var nombre2;
 
 
 var musicaFondo;
@@ -77,7 +170,7 @@ var textoNombre2;
 /////////////////////////////////FUNCIONES PARA LAS HABILIDADES/////////////////////////
 //Activar la habilidad del player1
 function activacionHabilidades1() {
-	poderActivarHabilidad1 = true;
+	poderActivarHabilidad1 = true;	
 	habilidad1 = this.physics.add.image(100, 600, 'habilidadP1').setScale(0.1);
 	habilidad1.setCollideWorldBounds(true);
 }
@@ -239,7 +332,6 @@ function ballScore2(pelota, plataformaDER) {
 	pelota.setVelocity(350, -100);
 }
 
-
 /////////////////////////////////ESCENA DE PRECARGA/////////////////////////
 class PreCarga extends Phaser.Scene {
 	constructor() {
@@ -261,7 +353,7 @@ class PreCarga extends Phaser.Scene {
         jugar.setOrigin(0);
         jugar.setInteractive();
         jugar.once('pointerdown', () => {
-            this.scene.start('LoginJ1')
+            this.scene.start('EleccionModo')
         });
         
         var tutorial = this.add.zone(775, 570, 330, 90);
@@ -272,7 +364,105 @@ class PreCarga extends Phaser.Scene {
         });
         
         textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
-  
+        
+         $.ajax({
+            type: "DELETE",
+            url: "/usuarios",
+            dataType: "json",
+        }).done(function (data) {
+            console.log("DELETE USUARIO");
+        });
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "/usuarios",
+            data: JSON.stringify("--------- USUARIO ---------"),
+            dataType: "json",
+            processData: false
+        }).done(function (data) {
+            console.log("POST USUARIO");
+        });
+        
+	}
+	update(){
+			$.ajax({
+                timeout: 5000,
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://127.0.0.1:8080/",
+                cache: false,
+                "error":function(XMLHttpRequest,textStatus, errorThrown) {
+                    if(errorThrown == "timeout") {
+						 console.log("Error con el servidor");                     
+                    }else{					
+}
+                },
+                statusCode: {
+					//Página no encontrada
+                    404:function(){
+                        textServer.setText('Estado del Servidor: Página no encontrada')
+
+                    },
+                    //Servidor desconectado
+                    0:function(){
+                        textServer.setText('Estado del Servidor: Desconectado')
+
+                    },
+                    //Error interno del servidor
+                    500:function(){
+                        textServer.setText('Estado del Servidor: Error interno')
+
+                    },
+                    //Servidor conectado
+                    200:function(){
+                       textServer.setText('Estado del Servidor: Conectado')
+                    }
+                }
+            });
+
+	}
+}
+
+/////////////////////////////////ESCENA DE ELECCIÓN DE MODO DE JUEGO/////////////////////////
+class EleccionModo extends Phaser.Scene {
+	constructor() {
+		super({ key: 'EleccionModo' });
+	}
+
+	preload() {
+		this.load.image('menuPrincipal', 'assets/menu principal.png');
+		this.load.image('linea', 'assets/jugar_en_linea.png');
+		this.load.image('local', 'assets/jugar_local.png');
+	}
+
+	create() {
+		this.add.image(700, 375, 'menuPrincipal').setScale(1);
+		this.add.image(940, 565, 'linea').setScale(0.4);
+		this.add.image(330, 565, 'local').setScale(0.4);
+		
+		
+		//Local
+		var local = this.add.zone(235, 500, 190, 130);
+        local.setOrigin(0);
+        local.setInteractive();
+        local.once('pointerdown', () => {
+            this.scene.start('LoginJ1')
+        });
+       // this.add.graphics().lineStyle(2,0x00ff0c).strokeRectShape(local);
+        
+        //En Línea
+        var linea = this.add.zone(815, 500, 260, 130);
+        linea.setOrigin(0);
+        linea.setInteractive();
+        linea.once('pointerdown', () => {
+            this.scene.start('LoginOnline')
+        });
+        //this.add.graphics().lineStyle(2,0x00ff0c).strokeRectShape(linea);
+        
+        textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
 	}
 	update(){
 			$.ajax({
@@ -422,26 +612,7 @@ class LoginJ1 extends Phaser.Scene {
             }
         });
         
-        $.ajax({
-            type: "DELETE",
-            url: "/usuarios",
-            dataType: "json",
-        }).done(function (data) {
-            console.log("DELETE USUARIO");
-        });
-        $.ajax({
-            type: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            url: "/usuarios",
-            data: JSON.stringify("--------- USUARIO ---------"),
-            dataType: "json",
-            processData: false
-        }).done(function (data) {
-            console.log("POST USUARIO");
-        });
+       
         
         continuar.once('pointerdown', () => {
             $.ajax({
@@ -535,6 +706,103 @@ class LoginJ2 extends Phaser.Scene {
             }
         });
         
+        continuar.once('pointerdown', () => {
+            $.ajax({
+                type: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                url: "/usuarios",
+                data: JSON.stringify(entradaTexto.text),
+                dataType: "json",
+                processData: false
+            }).done(function (data) {
+                console.log("PUT USUARIO");
+            });
+        });
+	}
+	update(){
+		$.ajax({
+                timeout: 5000,
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://127.0.0.1:8080/",
+                cache: false,
+                "error":function(XMLHttpRequest,textStatus, errorThrown) {
+                    if(errorThrown == "timeout") {
+						 console.log("Error con el servidor");                     
+                    }else{					
+				}
+                },
+                statusCode: {
+					//Página no encontrada
+                    404:function(){
+                        textServer.setText('Estado del Servidor: Página no encontrada')
+
+                    },
+                    //Servidor desconectado
+                    0:function(){
+                        textServer.setText('Estado del Servidor: Desconectado')
+
+                    },
+                    //Error interno del servidor
+                    500:function(){
+                        textServer.setText('Estado del Servidor: Error interno')
+
+                    },
+                    //Servidor conectado
+                    200:function(){
+                       textServer.setText('Estado del Servidor: Conectado')
+                    }
+                }
+            });
+	}
+}
+
+/////////////////////////////////ESCENA DE LOGIN ONLINE/////////////////////////
+class LoginOnline extends Phaser.Scene {
+	constructor() {
+		super({ key: 'LoginOnline' });
+	}
+
+	preload() {
+		this.load.image('fondo', 'assets/fondoNombre.png');
+		this.load.audio('musicaFondo', 'sounds/menus.mp3');
+		this.load.image('texto', 'assets/Sel_nombre.png');
+		this.load.image('continuarJ', 'assets/CONTINUAR.png');
+		
+	}
+
+	create() {
+		this.add.image(700, 375, 'fondo').setScale(1);
+		this.add.image(710, 200, 'texto').setScale(0.8);
+		this.add.sprite(1000, 625, 'continuarJ').setScale(0.3).setInteractive();
+		
+		musicaFondo = this.sound.add('musicaFondo', { loop: false });
+        musicaFondo.play();
+		
+		var continuar = this.add.zone(870, 570, 250, 80);
+        continuar.setOrigin(0);
+        continuar.setInteractive();
+        continuar.once('pointerdown', () => {
+            this.scene.start('PreJuegoOnline')
+        });
+        
+        textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
+        
+        var entradaTexto = this.add.text(80, 450, '', { fontSize: '50px', fill: '#000000', fontFamily: 'fuente'});
+        
+        this.input.keyboard.on('keydown', function (event) {
+
+            if (event.keyCode === 8 && entradaTexto.text.length > 0) {
+                entradaTexto.text = entradaTexto.text.substr(0, entradaTexto.text.length - 1);
+            }
+            else if (event.keyCode === 32 || (event.keyCode >= 48 && event.keyCode < 90)) {
+                entradaTexto.text += event.key;
+            }
+        });
+
         continuar.once('pointerdown', () => {
             $.ajax({
                 type: "PUT",
@@ -1034,7 +1302,7 @@ class EscenaPreJuego extends Phaser.Scene {
             this.scene.start('Chat')
         });
         textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
-         
+               
          $.ajax({
             type: "GET",
             url: "/usuarios",
@@ -1051,8 +1319,98 @@ class EscenaPreJuego extends Phaser.Scene {
         
 	}
 	update(){
+		
 		textoNombre1.setText(nombres[0] + " ha seleccionado a: " + jugador1);
         textoNombre2.setText(nombres[1] + " ha seleccionado a: " + jugador2);
+        
+		$.ajax({
+                timeout: 5000,
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://127.0.0.1:8080/",
+                cache: false,
+                "error":function(XMLHttpRequest,textStatus, errorThrown) {
+                    if(errorThrown == "timeout") {
+						 console.log("Error con el servidor");                     
+                    }else{					
+				}
+                },
+                statusCode: {
+					//Página no encontrada
+                    404:function(){
+                        textServer.setText('Estado del Servidor: Página no encontrada')
+
+                    },
+                    //Servidor desconectado
+                    0:function(){
+                        textServer.setText('Estado del Servidor: Desconectado')
+
+                    },
+                    //Error interno del servidor
+                    500:function(){
+                        textServer.setText('Estado del Servidor: Error interno')
+
+                    },
+                    //Servidor conectado
+                    200:function(){
+                       textServer.setText('Estado del Servidor: Conectado')
+                    }
+                }
+            });
+	}
+}
+
+/////////////////////////////////ESCENA DE PREJUEGO ONLINE/////////////////////////
+class PreJuegoOnline extends Phaser.Scene {
+	constructor() {
+		super({ key: 'PreJuegoOnline' });
+	}
+
+	preload() {
+		this.load.image('EscPre', 'assets/fondo.png');
+		this.load.image('boton', 'assets/JUGAR boton.png');
+		this.load.image('botonChat', 'assets/BotonChat.png');
+	}
+	create() {
+		this.add.image(700, 375, 'EscPre').setScale(1);
+		
+		this.add.sprite(490, 200, 'boton').setScale(0.8);
+		this.add.sprite(1100, 100, 'botonChat').setScale(1);
+		
+		var juego = this.add.zone(290, 140, 400, 110);
+        juego.setOrigin(0);
+        juego.setInteractive();
+        juego.once('pointerdown', () => {
+			musicaFondo.stop();
+            this.scene.start('JuegoOnline')
+        });
+        
+        var chatear = this.add.zone(870, 60, 480, 80);
+        chatear.setOrigin(0);
+        chatear.setInteractive();
+        chatear.once('pointerdown', () => {
+            this.scene.start('ChatOnline')
+        });
+        textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
+         
+        textoNombre1 = this.add.text(270, 450, '', { fontSize: '50px', fill: '#000', fontFamily: 'fuente' });
+        textoNombre2 = this.add.text(250, 600, '', { fontSize: '50px', fill: '#000', fontFamily: 'fuente' });
+        
+	}
+	update(){
+		  $.ajax({
+            type: "GET",
+            url: "/usuarios",
+            dataType: "json",
+        }).done(function (data) {
+			nombres[0] = data[0];
+			nombres[1] = data[1];
+
+            console.log("GET USUARIOS");
+        });
+        
+		textoNombre1.setText(nombres[0] + " VS " + nombres[1]);
+        //textoNombre2.setText(nombres[1] + " ha seleccionado a: " + jugador2);
         
 		$.ajax({
                 timeout: 5000,
@@ -1240,11 +1598,159 @@ class Chat extends Phaser.Scene {
 	}
 }
 
+/////////////////////////////////ESCENA DE CHAT ONLINE/////////////////////////
+class ChatOnline extends Phaser.Scene {
+	constructor() {
+		super({ key: 'ChatOnline' });
+	}
+
+	preload() {
+		this.load.image('fondoChat', 'assets/fondoChat.png');
+		this.load.image('botonVolver', 'assets/BotonVolver.png');
+		this.load.image('imagenChat', 'assets/BotonChat.png');
+		
+		this.load.html('nameform', 'src/nameform.html');
+	}
+
+	create() {		
+	
+    
+		this.add.image(700, 375, 'fondoChat').setScale(1);
+		this.add.sprite(1200, 670, 'botonVolver').setScale(1);
+		this.add.image(700, 100, 'imagenChat').setScale(1);
+
+		var regreso = this.add.zone(1070, 630, 250, 80);
+        regreso.setOrigin(0);
+        regreso.setInteractive();
+        regreso.once('pointerdown', () => {
+            this.scene.start('PreJuegoOnline');
+        });
+        
+       $.ajax({
+            type: "DELETE",
+            url: "/chat",
+            dataType: "json",
+        }).done(function (data) {
+            console.log("DELETE CHAT");
+        });
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "/chat",
+            data: JSON.stringify(""),
+            dataType: "json",
+            processData: false
+        }).done(function (data) {
+            console.log("POST CHAT");
+        });
+        
+       textoChat = this.add.text(300, 185, chat, {aling: 'center', color:'Black', font: '30px Courier'});
+       textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
+        
+	}
+	update(){
+		$("#value-input").click(function () {
+            enviar = true;
+        })
+        
+        $("#add-button").click(function () {
+            if (enviar === true) {
+                enviar = false;
+
+                console.log("no pausa");
+                var value = $('#value-input').val();
+
+                $.ajax({
+                    type: "PUT",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    url: "/chat",
+                    data: JSON.stringify(value),
+                    dataType: "json",
+                    processData: false
+                }).done(function (data) {
+                    console.log("PUT CHAT");
+                });
+                
+                $('#value-input').val('');
+            }
+        })
+        
+        $.ajax({
+            type: "GET",
+            url: "/chat",
+            dataType: "json",
+        }).done(function (data) {
+            
+            chat[0] = undefined;
+            chat[1] = data[data.length - 12];
+            chat[2] = data[data.length - 11];
+            chat[3] = data[data.length - 10];
+            chat[4] = data[data.length - 9];
+            chat[5] = data[data.length - 8];
+            chat[6] = data[data.length - 7];
+            chat[7] = data[data.length - 6];
+            chat[8] = data[data.length - 5];
+            chat[9] = data[data.length - 4];
+            chat[10] = data[data.length - 3];
+            chat[11] = data[data.length - 2];
+            chat[12] = data[data.length - 1];
+            
+            console.log(chat);
+            console.log(chat.length);
+            console.log(data.length);
+            console.log("GET CHAT");
+            textoChat.setText(chat);
+        });
+       
+         textoChat.setText(chat);
+         
+         $.ajax({
+                timeout: 5000,
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://127.0.0.1:8080/",
+                cache: false,
+                "error":function(XMLHttpRequest,textStatus, errorThrown) {
+                    if(errorThrown == "timeout") {
+						 console.log("Error con el servidor");                     
+                    }else{					
+				}
+                },
+                statusCode: {
+					//Página no encontrada
+                    404:function(){
+                        textServer.setText('Estado del Servidor: Página no encontrada')
+
+                    },
+                    //Servidor desconectado
+                    0:function(){
+                        textServer.setText('Estado del Servidor: Desconectado')
+
+                    },
+                    //Error interno del servidor
+                    500:function(){
+                        textServer.setText('Estado del Servidor: Error interno')
+
+                    },
+                    //Servidor conectado
+                    200:function(){
+                       textServer.setText('Estado del Servidor: Conectado')
+                    }
+                }
+            });
+	}
+}
+
 /////////////////////////////////ESCENA DE JUEGO/////////////////////////
 class EscenaJuego extends Phaser.Scene {
 	constructor() {
 		super({ key: 'EscenaJuego' });
-
 	}
 
 	preload() {
@@ -2300,6 +2806,443 @@ class Creditos extends Phaser.Scene {
 	}
 }
 
+/////////////////////////////////ESCENA DE JUEGO ONLINE/////////////////////////
+class JuegoOnline extends Phaser.Scene {
+	constructor() {
+		super({ key: 'JuegoOnline' });
+	}
+
+	preload() {
+		this.load.image('FirstBackground', 'assets/FirstBackground.png');
+		this.load.image('suelo', 'assets/platform.png');
+		this.load.spritesheet('spriteP1', 'assets/IreneMerkel.png',
+			{ frameWidth: 32, frameHeight: 48 });
+		this.load.spritesheet('spriteP7', 'assets/FranciscoFernandez.png',
+			{ frameWidth: 32, frameHeight: 48 });
+		this.load.image('balon', 'assets/wizball.png');
+		this.load.image('redV', 'assets/red.png');
+		this.load.image('objInvisible', 'assets/objInvisible.png');
+		this.load.image('habilidadP1', 'assets/habilidad.png');
+		this.load.image('habilidadP2', 'assets/habilidad.png');
+		this.load.image('espera', 'assets/espera.png');
+		
+		this.load.image('VictoriaJ1', 'assets/victoriaJ1.png');
+		this.load.image('VictoriaJ2', 'assets/victoriaJ2.png');
+		this.load.image('Empate', 'assets/empate.png');
+		this.load.audio('musicaJuego', '/sounds/juego.mp3');
+		this.load.audio('musicaRebote', '/sounds/rebote.mp3');		
+		this.load.audio('audioFrancisco', '/sounds/audioFrancisco.mp3');
+		this.load.audio('audioIrene', '/sounds/audioIrene.mp3');	
+		this.load.audio('musicaPunto', '/sounds/punto.mp3');
+	}
+
+	create() {
+		//////////////////////////CREACIÓN DE LA MÚSICA///////////////////////
+		musicaJuego = this.sound.add('musicaJuego', { loop: false });
+		rebote = this.sound.add('musicaRebote', { loop: false });
+		punto = this.sound.add('musicaPunto', { loop: false });
+				
+		audioFrancisco = this.sound.add('audioFrancisco', { loop: false });
+		audioIrene = this.sound.add('audioIrene', { loop: false });
+		
+       	musicaJuego.play();
+
+		//////////////////////////CREACIÓN DEL FONDO///////////////////////
+		this.add.image(700, 375, 'FirstBackground').setScale(1);
+		habilidad1 = this.physics.add.image(100, 600, 'habilidadP1').setScale(0.1);
+		habilidad2 = this.physics.add.image(1300, 600, 'habilidadP2').setScale(0.1);
+		habilidad1.setCollideWorldBounds(true);
+		habilidad2.setCollideWorldBounds(true);
+
+		//////////////////////////CREACIÓN DEL ESCENARIO///////////////////////
+		plataformaIZQ = this.physics.add.staticGroup();
+		plataformaDER = this.physics.add.staticGroup();
+		redes = this.physics.add.staticGroup();
+		objInvisible = this.physics.add.staticGroup();
+
+		plataformaIZQ.create(98, 790, 'suelo').setScale(3).refreshBody();
+		plataformaDER.create(1302, 790, 'suelo').setScale(3).refreshBody();
+		redes.create(700, 700, 'redV').setScale(1).refreshBody();
+		objInvisible.create(0, 250, 'objInvisible').setScale(8).refreshBody();
+
+
+		//////////////////////////CREACIÓN DEL PERSONAJE 1///////////////////////
+		
+			player1 = this.physics.add.sprite(150, 450, 'spriteP1');
+			player1.setScale(3);
+			player1.setCollideWorldBounds(true);
+			this.anims.create({
+				key: 'left1',
+				frames: this.anims.generateFrameNumbers('spriteP1', { start: 0, end: 3 }),
+				frameRate: 10,
+				repeat: -1
+			});
+
+			this.anims.create({
+				key: 'turn1',
+				frames: [{ key: 'spriteP1', frame: 4 }],
+				frameRate: 20
+			});
+
+			this.anims.create({
+				key: 'right1',
+				frames: this.anims.generateFrameNumbers('spriteP1', { start: 5, end: 8 }),
+				frameRate: 10,
+				repeat: -1
+			});
+
+			this.anims.create({
+				key: 'turnDef1',
+				frames: [{ key: 'spriteP1', frame: 0 }],
+				frameRate: 20
+			});
+
+		//////////////////////////CREACIÓN DEL PERSONAJE 2///////////////////////
+			player2 = this.physics.add.sprite(1250, 450, 'spriteP7');
+			player2.setScale(3)
+			player2.setCollideWorldBounds(true);
+			this.anims.create({
+				key: 'left2',
+				frames: this.anims.generateFrameNumbers('spriteP7', { start: 0, end: 3 }),
+				frameRate: 10,
+				repeat: -1
+			});
+
+			this.anims.create({
+				key: 'turn2',
+				frames: [{ key: 'spriteP7', frame: 4 }],
+				frameRate: 20
+			});
+
+			this.anims.create({
+				key: 'right2',
+				frames: this.anims.generateFrameNumbers('spriteP7', { start: 5, end: 8 }),
+				frameRate: 10,
+				repeat: -1
+			});
+
+			this.anims.create({
+				key: 'turnDef2',
+				frames: [{ key: 'spriteP7', frame: 0 }],
+				frameRate: 20
+			});
+
+		player1.body.immovable = true;
+		player2.body.immovable = true;
+
+
+		//////////////////////////CREACIÓN DE LA BOLA///////////////////////
+		pelota = this.physics.add.image(700, 50, 'balon');
+		pelota.setCircle(46);
+		pelota.setCollideWorldBounds(true);
+		pelota.setBounce(1);
+		
+
+		//////////////////////////CREACIÓN DEL MARCADOR///////////////////////
+		textoMarcadorJ1 = this.add.text(16, 50, 'Puntuación: 0', { fontSize: '32px', fill: '#000' });
+		textoMarcadorJ2 = this.add.text(1110, 50, 'Puntuación: 0', { fontSize: '32px', fill: '#000' });
+		
+		 $.ajax({
+            type: "GET",
+            url: "/usuarios",
+            dataType: "json",
+        }).done(function (data) {
+			nombres[0] = data[0];
+			nombres[1] = data[1];
+
+            console.log("GET USUARIOS");
+        });
+        
+        textoNombre1 =  this.add.text(16, 16, '', { fontSize: '32px', fill: '#000' });
+        textoNombre2 =  this.add.text(1110, 16, '', { fontSize: '32px', fill: '#000' });
+
+
+		//////////////////////////TIEMPO DE JUEGO///////////////////////
+		textoTiempo = this.add.text(450, 16, 'Tiempo para finalizar', { fontSize: '32px', fill: '#000' });
+		timedEvent = this.time.delayedCall(200000, finDeJuego, [], this);//3'3 minutos de juego
+
+
+		//////////////////////////DETECCIÓN DE COLISIONES///////////////////////
+		this.physics.add.overlap(player1, objInvisible, nopoderSaltar, null, this);
+		this.physics.add.collider(player1, plataformaIZQ, poderSaltar, null, this);
+		this.physics.add.collider(player1, plataformaIZQ);
+		this.physics.add.overlap(player1, redes, teletransporteJ1, null, this);
+		this.physics.add.collider(player1, redes);
+		this.physics.add.collider(player1, pelota, player1HitBall, null, this);
+
+		this.physics.add.overlap(player2, objInvisible, nopoderSaltar, null, this);
+		this.physics.add.collider(player2, plataformaIZQ, poderSaltar, null, this);
+		this.physics.add.collider(player2, plataformaIZQ);
+		this.physics.add.collider(player2, plataformaDER);
+		this.physics.add.overlap(player2, redes, teletransporteJ2, null, this);
+		this.physics.add.collider(player2, redes);
+		this.physics.add.collider(player2, pelota, player2HitBall, null, this);
+
+		this.physics.add.collider(pelota, plataformaIZQ);
+		this.physics.add.collider(pelota, plataformaDER);
+		this.physics.add.collider(pelota, redes, colisonRed, null, this);
+		this.physics.add.overlap(pelota, plataformaIZQ, ballScore, null, this);
+		this.physics.add.overlap(pelota, plataformaDER, ballScore2, null, this);
+		
+		textServer = this.add.text(20, 720, '', { fontSize: '20px', fill: '#000', fontFamily: 'fuente' });
+		
+		pantallaEspera = this.add.image(700, 375, 'espera').setDepth(3);
+		WebSocketConnection();
+	}
+
+	update() {
+		
+		if(host === 0 && evitarBucle === true){
+			evitarBucle = false;
+			player2.setVelocityX(1);
+		}
+		
+		if(player2.x != 1250){
+			pantallaEspera.x = -3000;
+			empezarPartida = true;
+		}
+		
+		if (empezarPartida === true && lanzarDoble === true){
+			pelota.setVelocity(-350, 0);
+			pelota.x = 700;
+			pelota.y = 50;
+			lanzarDoble = false;
+		}
+		textoNombre1.setText(nombres[0]);
+        textoNombre2.setText(nombres[1]);
+        
+		//Terminar el juego al llegar a 20 puntos
+		if (marcadorJ2 == 20 || marcadorJ1 == 20) {
+			if (marcadorJ1 > marcadorJ2) {
+				this.add.image(700, 375, 'VictoriaJ1').setScale(1);
+				player2.setTint(0xff0000);
+				player1.setTint(0x00ff00);
+			} else if (marcadorJ1 < marcadorJ2) {
+				this.add.image(700, 375, 'VictoriaJ2').setScale(1);
+				player1.setTint(0xff0000);
+				player2.setTint(0x00ff00);
+			} else {
+				this.add.image(700, 375, 'Empate').setScale(1);
+			}
+			timedEvent.paused = true;
+			pelota.disableBody(true, true);
+			this.physics.pause();
+			player1.anims.play('turn1');
+			player2.anims.play('turnDef2');
+			animacionJugador1 = 'turn1';
+			animacionJugador2 = 'turnDef2'
+			this.time.delayedCall(5000, pantallaCreditos, [], this);
+		}
+		
+		if(empezarPartida === true && host == 1){
+			tiempoAux = timedEvent.getProgress();
+		}
+        textoTiempo.setText('Tiempo para finalizar: ' + (200 - (tiempoAux * 200).toString().substr(0, 3)));
+
+		//////////////////////////CONTROL DEL PLAYER1///////////////////////
+		if (host == 1){
+			habilidad2.disableBody(true, true);
+			this.input.keyboard.on("keydown_A", () => {			
+				
+			if (FernandoActivado === true) {
+				player1.setVelocityX(-250);
+				player1.anims.play('left1', true);
+				animacionJugador1 = 'left1';
+			}else{
+				player1.setVelocityX(-400);
+				player1.anims.play('left1', true);
+				animacionJugador1 = 'left1';
+			}
+		});
+		this.input.keyboard.on("keydown_D", () => {
+				
+			if (FernandoActivado === true) {
+				player1.setVelocityX(250);
+				player1.anims.play('right1', true);
+				animacionJugador1 = 'right1';
+			}else{
+				player1.setVelocityX(400);
+				player1.anims.play('right1', true);
+				animacionJugador1 = 'right1';
+			}
+		});
+		this.input.keyboard.on("keyup_A", () => {
+			player1.setVelocityX(0);
+			player1.anims.play('turnDef1');
+			animacionJugador1 = 'turnDef1';
+		});
+		this.input.keyboard.on("keyup_D", () => {
+			player1.setVelocityX(0);
+
+			player1.anims.play('turn1');
+			animacionJugador1 = 'turn1';
+		});
+
+		this.input.keyboard.on("keyup_W", () => {
+			if (puedeSaltar === true) {
+				player1.setVelocityY(-430);
+			}
+		});
+
+		this.input.keyboard.on("keydown_S", () => {
+			if (poderActivarHabilidad1 === true) {
+					efectoHabilidadIreneMerkel1 = true;
+					this.time.delayedCall(3000, habilidadIreneMerkel, [], this);
+					poderActivarHabilidad1 = false;
+					habilidad1.disableBody(true, true);
+					audioIrene.play();
+					this.time.delayedCall(60000, activacionHabilidades1, [], this);	
+			}
+		});
+		
+		conexion.send(
+			    JSON.stringify({
+					// Posición del jugador
+			      	x: player1.x,
+			      	y: player1.y,
+			      	
+			      	//Animaciones jugador
+			      	animacionJugadores: animacionJugador1,
+			      	
+			      	// Tiempo
+			      	tiempo: tiempoAux,
+			      	
+			      	// Posición de la pelota
+			      	PelotaX: pelota.x,
+			      	PelotaY: pelota.y,
+			      	
+			      	// Puntuación de jugadores
+			      	PuntosJ1: marcadorJ1,
+			      	PuntosJ2: marcadorJ2,
+			      	
+			      	//Habilidades especiales
+			      	HabilidadIrene: efectoHabilidadIreneMerkel1,
+			      	HabilidadFernando: efectoHabilidadFranciscoFernandez2
+			      	
+			    })
+			);
+		}
+
+		//////////////////////////CONTROL DEL PLAYER2///////////////////////
+		if (host == 0){
+			habilidad1.disableBody(true, true);
+			this.input.keyboard.on("keydown_J", () => {
+			if (IreneActivado == true){
+				player2.setVelocityX(0);
+				player2.anims.play('left2', true);
+				animacionJugador2 = 'left2';
+			}else{
+				player2.setVelocityX(-400);
+				player2.anims.play('left2', true);
+				animacionJugador2 = 'left2';
+			}
+
+		});
+		this.input.keyboard.on("keydown_L", () => {
+			if (IreneActivado == true){
+				player2.setVelocityX(0);
+				player2.anims.play('right2', true);
+				animacionJugador2 = 'right2';
+			}else{
+				player2.setVelocityX(400);
+				player2.anims.play('right2', true);
+				animacionJugador2 = 'right2';
+			}
+		});
+		this.input.keyboard.on("keyup_J", () => {
+			player2.setVelocityX(0);
+
+			player2.anims.play('turnDef2');
+			animacionJugador2 = 'turnDef2';
+		});
+		this.input.keyboard.on("keyup_L", () => {
+			player2.setVelocityX(0);
+
+			player2.anims.play('turn2');
+			animacionJugador2 = 'turn2';
+		});
+		this.input.keyboard.on("keyup_I", () => {
+			if (puedeSaltar === true && IreneActivado === false) {
+				player2.setVelocityY(-430);
+			}
+		});
+		this.input.keyboard.on("keydown_K", () => {
+			if (poderActivarHabilidad2 === true) {
+					efectoHabilidadFranciscoFernandez2 = true;
+					this.time.delayedCall(10000, habilidadFranciscoFernandez, [], this);
+
+					poderActivarHabilidad2 = false;
+					habilidad2.disableBody(true, true);
+					audioFrancisco.play();
+					this.time.delayedCall(60000, activacionHabilidades2, [], this);
+			}
+		});
+		conexion.send(
+			    JSON.stringify({
+					// Posición del jugador
+			      	x: player2.x,
+			      	y: player2.y,
+			      	
+			      	//Animaciones jugadores
+			      animacionJugadores: animacionJugador2,
+			      
+			      // Tiempo
+			      	tiempo: tiempoAux,
+			      	
+			      	// Posición de la pelota
+			      	PelotaX: pelota.x,
+			      	PelotaY: pelota.y,
+			      	
+			      	// Puntuación de jugadores
+			      	PuntosJ1: marcadorJ1,
+			      	PuntosJ2: marcadorJ2,
+			      	
+			      		//Habilidades especiales
+			      	HabilidadIrene: efectoHabilidadIreneMerkel1,
+			      	HabilidadFernando: efectoHabilidadFranciscoFernandez2
+			    })
+			);
+		}
+		
+		
+		$.ajax({
+                timeout: 5000,
+                type: 'GET',
+                dataType: 'jsonp',
+                url: "http://127.0.0.1:8080/",
+                cache: false,
+                "error":function(XMLHttpRequest,textStatus, errorThrown) {
+                    if(errorThrown == "timeout") {
+						 console.log("Error con el servidor");                     
+                    }else{					
+				}
+                },
+                statusCode: {
+					//Página no encontrada
+                    404:function(){
+                        textServer.setText('Estado del Servidor: Página no encontrada')
+
+                    },
+                    //Servidor desconectado
+                    0:function(){
+                        textServer.setText('Estado del Servidor: Desconectado')
+
+                    },
+                    //Error interno del servidor
+                    500:function(){
+                        textServer.setText('Estado del Servidor: Error interno')
+
+                    },
+                    //Servidor conectado
+                    200:function(){
+                       textServer.setText('Estado del Servidor: Conectado')
+                    }
+                }
+            });
+		
+	}
+}
+
 /////////////////////////////////CONFIGURACION Y CARGA DE LAS ESCENAS/////////////////////////
 const config = {
 	type: Phaser.AUTO,
@@ -2316,7 +3259,7 @@ const config = {
 	dom: {
         createContainer: true
     },
-	scene: [PreCarga, Tutorial, LoginJ1, LoginJ2, SeleccionJ1, SeleccionJ2, EscenaPreJuego, Chat, EscenaJuego, Creditos],
+	scene: [PreCarga, EleccionModo, Tutorial, LoginJ1, LoginJ2, LoginOnline, SeleccionJ1, SeleccionJ2, EscenaPreJuego, PreJuegoOnline, Chat, ChatOnline, EscenaJuego, JuegoOnline, Creditos],
 };
 
 let game = new Phaser.Game(config);
