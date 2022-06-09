@@ -35,15 +35,16 @@
   * 2.2. Flujo de juego
     * 2.2.1. Flujo de pantallas
   * 2.3. API REST
-  * 2.4. Personajes
-    * 2.4.1. Jeanne Louise Calment
-    * 2.4.2. Emanuel Durão
-    * 2.4.3. César Augusto
-    * 2.4.4. Irene Merkel
-    * 2.4.5. Francisco Fernández
-    * 2.4.6. Philippe Depoortere
-    * 2.4.7. Dmitri Efremov
-    * 2.4.8. Jasper Kluivert
+  * 2.4. WebSockets
+  * 2.5. Personajes
+    * 2.5.1. Jeanne Louise Calment
+    * 2.5.2. Emanuel Durão
+    * 2.5.3. César Augusto
+    * 2.5.4. Irene Merkel
+    * 2.5.5. Francisco Fernández
+    * 2.5.6. Philippe Depoortere
+    * 2.5.7. Dmitri Efremov
+    * 2.5.8. Jasper Kluivert
 * 3.**Arte** 
   * 3.1. Escenario 
   * 3.2. Personaje
@@ -154,57 +155,81 @@ _Figura 6. Pantalla de tutorial_
 
 &nbsp;
 
+![image](https://user-images.githubusercontent.com/79656478/172826083-27fc489d-4620-445d-9b02-1454984b1038.png)
+
+_Figura 7. Pantalla selección de modo de juego_
+
+&nbsp;
+
 ![image](https://user-images.githubusercontent.com/79656478/172045091-366603c1-ae28-4f23-ae74-848175faa203.png)
 
-_Figura 7. Pantalla de selección de nombre del jugador 1_
+_Figura 8. Pantalla de selección de nombre del jugador 1_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045111-3f654942-2fc3-4b87-ac04-13e8d1de44a8.png)
 
-_Figura 8. Pantalla de selección de nombre del jugador 2_
+_Figura 9. Pantalla de selección de nombre del jugador 2_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172826474-b37fe119-c0f9-44dc-b1e9-71d9613ce433.png)
+
+_Figura 10. Pantalla selección de nombre modo online_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045140-e5733899-9ae2-4e08-8d24-a15838346c89.png)
 
-_Figura 9. Pantalla de selección de personaje del jugador 1_
+_Figura 11. Pantalla de selección de personaje del jugador 1_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045180-49883bd7-8585-4590-a7f1-bf46fa6be9f7.png)
 
-_Figura 10. Pantalla de selección de personaje del jugador 2_
+_Figura 12. Pantalla de selección de personaje del jugador 2_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045201-646393a0-b537-4f14-ac1c-f45afb39ec06.png)
 
-_Figura 11. Pantalla previa a iniciar el juego_
+_Figura 13. Pantalla previa a iniciar el juego_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172826756-4f680486-6107-43fb-84f4-522d431e2b1d.png)
+
+_Figura 14. Pantalla previa a iniciar el juego en modo online_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045245-1334c072-406f-4a7e-9509-68e1a621d8f1.png)
 
-_Figura 12. Pantalla de sala de chat_
+_Figura 15. Pantalla de sala de chat_
+
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/79656478/172826901-cdfaa018-3fc7-4bf1-a183-4623a5d8dd30.png)
+
+_Figura 16. Pantalla e espera de juego online_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045284-055bd111-ad13-4c4f-8072-70e7526973a7.png)
 
-_Figura 13. Pantalla de juego_
+_Figura 17. Pantalla de juego_
 
 &nbsp;
 
 ![image](https://user-images.githubusercontent.com/79656478/172045345-595d8e19-17a9-4363-8240-c34b69a967ad.png)
 
-_Figura 14. Pantalla de créditos_
+_Figura 18. Pantalla de créditos_
 
 &nbsp;
 
-![image](https://user-images.githubusercontent.com/79656478/172045839-1e1fa7af-c66f-4d12-9c59-ec83ef3f56a1.png)
+![image](https://user-images.githubusercontent.com/79656478/172829793-b284d2fd-0c36-4050-b8bd-b4878562c839.png)
 
-_Figura 15. Flujo de pantallas_
+_Figura 19. Flujo de pantallas_
 
 &nbsp;
 
@@ -218,57 +243,74 @@ La API contiene:
 
 ![image](https://user-images.githubusercontent.com/79656478/172046614-e941d90b-841d-40a5-9acd-d9a8e5aa65e6.png)
 
-_Figura 16. Clases de la API REST_
+_Figura 20. Clases de la API REST_
 
 &nbsp;
 
-## 2.4. Personajes
+## 2.4. WebSockets
+La clase que maneja el WebSocket del videojuego es WebsockeVolleyFighterstHandler, esta clase esta formada por los siguientes métodos:
+- afterConnectionEstablished(): asigna el valor 1 al primer usuario que se conecta al servidor y un 0 al segundo que se conecta. Además muestra por pantalla un aviso de que existe un nuevo jugador junto a su ID.
+- afterConnectionClosed(): muestra por pantalla que un jugador ha salido del servidor junto a su ID.
+- handleTextMessage(): recibe un mensaje JSON desde el códido de phaser con todos los cambios del juego que queremos actualizar y los prepara para ser leídos por el método enviarInfo().
+- enviarInfo(): manda toda la información actualizada a diferentes jugadores conectados al servidor.
+
+Los elementos que el cliente le comunica al servidor son:
+- La posición de los jugadores.
+- La orientación de los jugadores.
+- El tiempo de juego.
+- La posición de la pelota.
+- Los puntos que lleva cada jugador.
+- La información sobre la activación de las habilidades especiales de cada personaje.
+
+&nbsp;
+
+## 2.5. Personajes
 En este apartado se procederá a la presentación de cada personaje, así como a la explicación de su habilidad, la cual está relacionada con su región de procedencia.
 
 Como se ha mencionado anteriormente, los personajes dispondrán de un tamaño de cabeza desproporcionado respecto al cuerpo, tal y cómo se muestra en la imagen siguiente.
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoPersonaje2.png" alt="JuveR" width="350px">
 
-_Figura 17. Imagen referencia del estilo de los personajes_
+_Figura 21. Imagen referencia del estilo de los personajes_
 
 &nbsp;
 
-### 2.4.1. Jeanne Louise Calment
+### 2.5.1. Jeanne Louise Calment
 Jeanne Louise Calment es un personaje procedente de la región francesa, su habilidad consiste en crear la Torre Eiffel durante 6 segundos.
 
 &nbsp;
 
-### 2.4.2. Emanuel Durão
+### 2.5.2. Emanuel Durão
 Emanuel Durão es un personaje procedente de la región portuguesa, su habilidad consiste en hacer la pelota de juego más pequeña durante 6 segundos.
 
 &nbsp;
 
-### 2.4.3. César Augusto
+### 2.5.3. César Augusto
 César Augusto es un personaje procedente de la región italiana, su habilidad consiste en poder invocar la Torre de Pisa de forma defensiva para ayudarle a defender puntos durante 6 segundos.
 
 &nbsp;
 
-### 2.4.4. Irene Merkel
+### 2.5.4. Irene Merkel
 Irene Merkel es un personaje procedente de la región alemana, su habilidad consiste en quemar a su oponente, impidiendo que éste se mueva durante 3 segundos.
 
 &nbsp;
 
-### 2.4.5. Francisco Fernández
+### 2.5.5. Francisco Fernández
 Francisco Fernández es un personaje procedente de la región española, su habilidad consiste en aumentar la potencia del juego, ocasionando que el rival retroceda y pierda velocidad durante 10 segundos.
 
 &nbsp;
 
-### 2.4.6. Philippe Depoortere
+### 2.5.6. Philippe Depoortere
 Philippe Depoortere es un personaje procedente de la región belga, su habilidad consiste en aumentar el tamaño del personaje durante 7 segundos.
 
 &nbsp;
 
-### 2.4.7. Dmitri Efremov
+### 2.5.7. Dmitri Efremov
 Dmitri Efremov es un personaje procedente de la región rusa, su habilidad consiste en poder consumir un elixir que aumenta su velocidad de movimiento en un 50% durante 5 segundos.
 
 &nbsp;
 
-### 2.4.8. Jasper Kluivert
+### 2.5.8. Jasper Kluivert
 Jasper Kluivert es un personaje procedente de la región holandesa, su habilidad consiste en reducir el tamaño de su oponente durante 7 segundos.
 
 &nbsp;
@@ -284,7 +326,7 @@ Como se muestra en la imagen, el escenario estaría basado en un coliseo romano,
 
 <img src="https://github.com/iperezc2019urjc/VolleyFighter/blob/main/Imagenes%20GDD/BocetoColiseo.png" alt="JuveR" width="700px">
 
-_Figura 18. Imagen referencia del escenario de juego_
+_Figura 22. Imagen referencia del escenario de juego_
 
 &nbsp;
 
