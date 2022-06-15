@@ -451,7 +451,7 @@ https://craftpix.net/categorys/sprites/
 
 &nbsp;
 
-# 5. Video
+# 6. Video
 Video de presentación y explicación del videojuego.
 
 https://youtu.be/CpNzY-9-vTE
