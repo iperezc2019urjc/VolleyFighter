@@ -61,6 +61,7 @@
   * 3.5. Música y efectos de sonido
 * 4.**Instrucciones ejecución del juego** 
 * 5.**Referencias**
+* 6.**Video**
 
 &nbsp;
 
@@ -447,4 +448,12 @@ https://www.streets4rage.com/
 https://swordshield.pokemon.com/es-es/ 
 
 https://craftpix.net/categorys/sprites/
+
+&nbsp;
+
+# 5. Video
+Video de presentación y explicación del videojuego.
+
+https://youtu.be/CpNzY-9-vTE
+
 
